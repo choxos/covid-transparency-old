@@ -6,6 +6,8 @@ author:
   - Sergio E. Uribe^[Department of Conservative Dentistry and Oral Health & Bioinformatics Research Unit, Riga Stradins University, Riga, Latvia.; sergio.uribe@rsu.lv]
 format: html
 editor: visual
+bibliography: references.bib
+csl: vancouver.csl
 ---
 
 **Corresponding author:** Eero Raittio; Address: ; Telephone: ; Email: eero.raittio\@uef.fi.
@@ -30,9 +32,11 @@ Our aim is to assess the uptake of transparent practices (data sharing, code sha
 
 ## Data sources and study selection
 
-We will search for open access COVID-19-related articles from dental journals available in the Europe PMC database. We will review dental journals based on a list of PubMed-indexed dental journals provided by the National Library of Medicine (NLM) catalog (https://bit.ly/3tz2ScL). We will restrict our search to papers in English. We will consider papers published from 2020-01-01 to 2021-12-31 with variants of COVID-19 keyword in their title. We will download all identified records in XML full-text format (for full-text evaluation) and in CSV format (for descriptive tabulations) from the database. The search query will be as follows:
+We will search for open access COVID-19-related articles from medical journals available in the Europe PMC database. We will restrict our search to papers in English. We will consider papers published from 2020-01-01 to 2021-12-31 with variants of COVID-19 keyword in their title, keywords, or results. We will download all identified records in XML full-text format (for full-text evaluation) and in CSV format (for descriptive tabulations) from the database. The search query will be as follows:
 
-'(TITLE:COVID OR COVID19 OR "SARS-CoV-2" OR "SARS-CoV2" OR SARSCoV2 OR"SARSCoV-2" OR "SARS coronavirus 2" OR "2019 nCoV" OR "2019nCoV" OR "2019-novel CoV" OR "nCov 2019" OR "nCov 19" OR "severe acute respiratory syndrome coronavirus 2" OR "novel coronavirus disease" OR "novel corona virus disease" OR "corona virus disease 2019" OR "coronavirus disease 2019" OR "novel coronavirus pneumonia" OR "novel corona virus pneumonia" OR "severe acute respiratory syndrome coronavirus 2") AND (SRC:"MED") AND (LANG:"eng" OR LANG:"en" OR LANG:"us") AND (FIRST_PDATE:\[2020-01-01 TO 2021-12-31\]) AND (OPEN_ACCESS:y)
+(COVID-19 query for title, keywords, and results) AND (SRC:"MED") AND (LANG:"eng" OR LANG:"en" OR LANG:"us") AND (FIRST_PDATE:\[2020-01-01 TO 2021-12-31\]) AND ((IN_EPMC:y) OR (OPEN_ACCESS:y)) AND (PUB_TYPE:"Journal Article" OR PUB_TYPE:"research-article" OR PUB_TYPE:"rapid-communication" OR PUB_TYPE:"product-review")'
+
+The COVID-19 query is available in the *covid_keywords.csv* file.
 
 ## Data extraction and synthesis
 
@@ -48,14 +52,16 @@ We aim to describe the use of five transparency indicators:
 
 -   statements of protocol registration.
 
-To do so, we will use a validated and automated tool developed by Serghiou et al.1 to extract the indicators from open access articles downloaded from the Europe PMC database.
+To do so, we will use a validated and automated tool developed by Serghiou et al. [@serghiou2021] to extract the indicators from open access articles downloaded from the Europe PMC database.
 
-Basic journal- and article-related information (publisher, publication year and journal name) will be retrieved from the Europe PMC database. We will download additional information about journal impact factors and journal subject categories from the Journal Citation Reports.
+Basic journal- and article-related information (publisher, publication year and journal name) will be retrieved from the Europe PMC database. We will download additional information about journal impact factors from the Journal Citation Reports.
 
-We will use R 2 for searches, data handling, analysis and reporting. The searches and data export from the Europe PMC will be conducted with the europepmc package3. Transparency indicators from the available full-texts will be extracted with the rtransparent package4. Trends over time in transparency indicators by journal- and article-related information will be reported using descriptive tabulations and graphical illustrations, for instance using the ggplot2 package5.
+We will use R [@R-base] for searches, data handling, analysis and reporting. The searches and data export from the Europe PMC will be conducted with the europepmc package [@europepmc]. Transparency indicators from the available full-texts will be extracted with the rtransparent package [@rtransparent]. Trends over time in transparency indicators by journal- and article-related information will be reported using descriptive tabulations and graphical illustrations, for instance using the ggplot2 package [@ggplot2].
 
 The protocol of this study will be published beforehand on the Open Science Framework website (OSF, osf.io).
 
 # Limitations
 
 The study sample will be restricted to open access articles in the Europe PMC database which may not correspond to all COVID-19-related studies published in medical journals. However, as the majority of COVID-19-related papers are open access, this will not diminish the strength of our interpretations considerably.
+
+# References

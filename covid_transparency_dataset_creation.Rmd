@@ -1,0 +1,178 @@
+---
+title: "Transparency indicators across the dentistry and oral health literature"
+author: Eero Raittio, Ahmad Sofi-Mahmudi, Erfan Shamsoddin, Sergio E Uribe, Julie Farmer
+date: "1/8/2022"
+output: html_document
+---
+
+# Loading required packages
+
+```{r}
+pacman::p_load(tidyverse,
+               rtransparent, 
+               metareadr, 
+               europepmc)
+```
+
+
+# Load the datasets
+
+## Load all open access dentistry and oral health papers indexed in PubMed to the end of 2021:
+
+```{r}
+COVID_19_keywords <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vS6ibaTIJ0-4MiOZrLHKwo-Ya3MjlGX4f-dPQwdmWwQZhRGi6C83K1I_WceUJPH9zGyBc4L-lSalET_/pub?output=csv")
+```
+
+```{r}
+COVID_19_keywords <- COVID_19_keywords %>% mutate(
+  search.term.title = paste0("TITLE:", '"', Keyword, '"'),
+  search.term.keyword = paste0("KW:", '"', Keyword, '"'),
+  search.term.results = paste0("RESULTS:", '"', Keyword, '"'))
+
+TitleQuery <- paste(COVID_19_keywords$search.term.title,
+                     collapse = " OR ")
+
+KeywordQuery <- paste(COVID_19_keywords$search.term.keyword,
+                     collapse = " OR ")
+
+ResultQuery <- paste(COVID_19_keywords$search.term.results,
+                     collapse = " OR ")
+```
+
+## Load all open access dentistry and oral health papers indexed in PubMed to the end of 2021:
+
+```{r}
+
+db_2020_1 <- epmc_search(query = paste0("'(", TitleQuery, " OR ", KeywordQuery, " OR ", ResultQuery, ") ", 'AND (SRC:"MED") AND (LANG:"eng" OR LANG:"en" OR LANG:"us") AND (FIRST_PDATE:[2020-01-01 TO 2020-06-30]) AND ((IN_EPMC:y) OR (OPEN_ACCESS:y)) AND (PUB_TYPE:"Journal Article" OR PUB_TYPE:"research-article" OR PUB_TYPE:"rapid-communication" OR PUB_TYPE:"product-review")', "'"), limit = 100000, output = "parsed")
+
+db_2020_1 <- epmc_search(query = paste0("'(", TitleQuery, " OR ", KeywordQuery, " OR ", ResultQuery, ") ", 'AND (SRC:"MED") AND (LANG:"eng" OR LANG:"en" OR LANG:"us") AND (FIRST_PDATE:[2020-01-01 TO 2020-06-30]) AND (OPEN_ACCESS:y) AND (PUB_TYPE:"Journal Article" OR PUB_TYPE:"research-article" OR PUB_TYPE:"rapid-communication" OR PUB_TYPE:"product-review")', "'"), limit = 100000, output = "parsed")
+
+db_2020_2 <- epmc_search(query = paste0("'(", TitleQuery, " OR ", KeywordQuery, " OR ", ResultQuery, ") ", 'AND (SRC:"MED") AND (LANG:"eng" OR LANG:"en" OR LANG:"us") AND (FIRST_PDATE:[2020-07-01 TO 2020-12-31]) AND ((IN_EPMC:y) OR (OPEN_ACCESS:y)) AND (PUB_TYPE:"Journal Article" OR PUB_TYPE:"research-article" OR PUB_TYPE:"rapid-communication" OR PUB_TYPE:"product-review")', "'"), limit = 100000, output = "parsed")
+
+db_2021_1 <- epmc_search(query = paste0("'(", TitleQuery, " OR ", KeywordQuery, " OR ", ResultQuery, ") ", 'AND (SRC:"MED") AND (LANG:"eng" OR LANG:"en" OR LANG:"us") AND (FIRST_PDATE:[2021-01-01 TO 2021-06-30]) AND ((IN_EPMC:y) OR (OPEN_ACCESS:y)) AND (PUB_TYPE:"Journal Article" OR PUB_TYPE:"research-article" OR PUB_TYPE:"rapid-communication" OR PUB_TYPE:"product-review")', "'"), limit = 100000, output = "parsed")
+
+db_2020_2 <- epmc_search(query = paste0("'(", TitleQuery, " OR ", KeywordQuery, " OR ", ResultQuery, ") ", 'AND (SRC:"MED") AND (LANG:"eng" OR LANG:"en" OR LANG:"us") AND (FIRST_PDATE:[2021-07-01 TO 2021-12-31]) AND ((IN_EPMC:y) OR (OPEN_ACCESS:y)) AND (PUB_TYPE:"Journal Article" OR PUB_TYPE:"research-article" OR PUB_TYPE:"rapid-communication" OR PUB_TYPE:"product-review")', "'"), limit = 100000, output = "parsed")
+
+
+db <- epmc_search(query = paste0("'(", TitleQuery, " OR ", KeywordQuery, " OR ", ResultQuery, ") ", 'AND (SRC:"MED") AND (LANG:"eng" OR LANG:"en" OR LANG:"us") AND (FIRST_PDATE:[2020-01-01 TO 2021-12-31]) AND ((IN_EPMC:y) OR (OPEN_ACCESS:y)) AND (PUB_TYPE:"Journal Article" OR PUB_TYPE:"research-article" OR PUB_TYPE:"rapid-communication" OR PUB_TYPE:"product-review")', "'"), limit = 1000000, output = "parsed")
+
+
+db <- epmc_search(query = paste0("'(", TitleQuery, " OR ", KeywordQuery, " OR ", ResultQuery, ") ", 'AND (SRC:"MED") AND (LANG:"eng" OR LANG:"en" OR LANG:"us") AND (FIRST_PDATE:[2020-01-01 TO 2021-12-31]) AND (OPEN_ACCESS:y) AND (PUB_TYPE:"Journal Article" OR PUB_TYPE:"research-article" OR PUB_TYPE:"rapid-communication" OR PUB_TYPE:"product-review")', "'"), limit = 1000000, output = "parsed")
+
+
+db <- epmc_search(
+  query = paste0(
+    "'(",
+    TitleQuery, " OR ", KeywordQuery, " OR ", ResultQuery,
+    ") ",
+    'AND (SRC:"MED") 
+    AND (LANG:"eng" OR LANG:"en" OR LANG:"us") 
+    AND (FIRST_PDATE:[2020-01-01 TO 2021-12-31])
+    AND ((IN_EPMC:y) OR (OPEN_ACCESS:y))
+    AND (PUB_TYPE:"Journal Article" OR PUB_TYPE:"research-article" OR PUB_TYPE:"rapid-communication" OR PUB_TYPE:"product-review")',
+    "'"
+  ),
+  limit = 100000, output = "parsed"
+)
+```
+
+Let's see how many duplicates are there:
+```{r}
+table(duplicated(db$pmid))
+```
+
+Removing the duplicates:
+```{r}
+db <- db %>% distinct(pmid, .keep_all = TRUE)
+```
+
+
+Let's see the first six rows of the database:
+```{r}
+head(db)
+```
+
+Removing "PMC" from the cells
+```{r}
+db_2020_1$pmcid_ <- gsub("PMC", "", as.character(db_2020_1$pmcid))
+
+db_2020_2$pmcid_ <- gsub("PMC", "", as.character(db_2020_2$pmcid))
+
+db_2021_1$pmcid_ <- gsub("PMC", "", as.character(db_2021_1$pmcid))
+
+db_2021_2$pmcid_ <- gsub("PMC", "", as.character(db_2021_2$pmcid))
+
+
+db$pmcid_ <- gsub("PMC", "", as.character(db$pmcid))
+```
+
+Now, we make a folder for xml format articles and switch to that folder:
+```{r}
+dir.create("pmc")
+setwd("pmc")
+```
+
+Next, we download xmls in format accessible with rtransparent:
+```{r}
+db_2020_1 <- subset(db_2020_1, pmcid_!=c(7264604, 7194244, 7323088, 7300787, 7276714, 7262104, 7228371))
+db_2020_2 <- subset(db_2020_2, pmcid_!=c(7677857, 7164703, 7678408, 7486161, 7645956, 7486166, 7675701, 7405208, 7753328, 7575215, 7759253, 7568026, 7598225, 7416582, 7649313, 7492687, 7571788, 7675665, 7572235, 7457217))
+db_2021_1 <- subset(db_2021_1, pmcid_!=c(8013335, 8013644, 8250125, 8014725, 8251275, 7486807, 8420411, 8251218, 8251305, 7894077))
+db_2021_2 <- subset(db_2021_2, pmcid_!=8653067)
+
+db <- subset(db_2021_2, pmcid_!=c(7264604, 8013335))
+
+
+
+
+sapply(db_2020_1$pmcid_, mt_read_pmcoa)
+
+sapply(db_2020_2$pmcid_, mt_read_pmcoa)
+
+sapply(db_2021_1$pmcid_, mt_read_pmcoa)
+
+sapply(db_2021_2$pmcid_, mt_read_pmcoa)
+
+
+sapply(db$pmcid_, mt_read_pmcoa)
+
+db <- subset(db, !(pmcid_ %in% c(8251275, 8251218, 7486161, 7228371, 8485571)))
+
+
+
+```
+Error in 8013644 - The metadata format 'pmc' is not supported by the item or by the repository.
+
+Error in 7572235 - The value of the identifier argument is unknown or illegal in this repository.
+
+Now we run rtransparent:
+```{r}
+filepath = dir(pattern=glob2rx("PMC*.xml"))
+
+results_table_all <- sapply(filepath, rt_all_pmc)
+
+results_table_data <- rt_data_code_pmc_list(
+  filepath,
+  remove_ns=F,
+  specificity = "low")
+
+write.csv(rt_data_code_pmc_list(filepath, remove_ns=F, specificity = "low"), "rt_data.csv")
+
+f1_data <- rt_data_code_pmc_list(f1, remove_ns=F, specificity = "low")
+
+```
+
+A list is created now. We should convert this list to a dataframe:
+```{r}
+df <- data.table::rbindlist(results_table_all, fill = TRUE)
+```
+
+
+Merge data sharing results to database file:
+
+```{r}
+setwd('..')
+db <- db[!duplicated(db[, 4]),]
+opendata <- merge(db, results_table_data, by = "pmid") %>% merge(df)
+View(opendata)
+```
+
