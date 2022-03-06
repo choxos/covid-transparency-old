@@ -40,7 +40,7 @@ The COVID-19 query is available in the *covid_keywords.csv* file.
 
 ## Data extraction and synthesis
 
-We aim to describe the use of five transparency indicators:
+We aim to describe adherence to five transparency practices in the articles:
 
 -   data availability,
 
@@ -55,6 +55,8 @@ We aim to describe the use of five transparency indicators:
 To do so, we will use a validated and automated tool developed by Serghiou et al. [@serghiou2021] to extract the indicators from open access articles downloaded from the Europe PMC database.
 
 Basic journal- and article-related information (publisher, publication year and journal name) will be retrieved from the Europe PMC database. We will download additional information about journal impact factors from the Journal Citation Reports.
+
+We will also calculate the proportion of articles available as open access via the Europe PMC from the total number of COVID-19-related detected in the database.
 
 We will use R [@R-base] for searches, data handling, analysis and reporting. The searches and data export from the Europe PMC will be conducted with the europepmc package [@europepmc]. Transparency indicators from the available full-texts will be extracted with the rtransparent package [@rtransparent]. Trends over time in transparency indicators by journal- and article-related information will be reported using descriptive tabulations and graphical illustrations, for instance using the ggplot2 package [@ggplot2].
 
