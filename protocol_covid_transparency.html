@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
   <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.9.16">
+  <meta name="generator" content="quarto-0.9.46">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <meta name="author" content="Ahmad Sofi-Mahmudi">
+  <meta name="author" content="Ahmad Sofi-Mahmudi ">
   <meta name="author" content="Eero Raittio*">
   <meta name="author" content="Sergio E. Uribe ">
   <title>Transparency of COVID-19 medical literature</title>
@@ -55,9 +55,9 @@
 <main class="content" id="quarto-document-content">
 <header id="title-block-header">
 <h1 class="title display-7">Transparency of COVID-19 medical literature</h1>
-<p class="author">Ahmad Sofi-Mahmudi<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p class="author">Eero Raittio*<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<p class="author">Sergio E. Uribe<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p class="author">Ahmad Sofi-Mahmudi<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p class="author">Eero Raittio*<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p class="author">Sergio E. Uribe<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 </header>
 <p><strong>Corresponding author:</strong> Eero Raittio; <strong>Address</strong>: ; Telephone: ; Email: eero.raittio@uef.fi.</p>
 <p><strong>Authors’ contributions:</strong> All authors conceived and designed, and wrote and revised the protocol.</p>
@@ -91,7 +91,7 @@
 <li><p>statements of protocol registration.</p></li>
 </ul>
 <p>To do so, we will use a validated and automated tool developed by Serghiou et al. <span class="citation" data-cites="serghiou2021">(<a href="#ref-serghiou2021" role="doc-biblioref">1</a>)</span> to extract the indicators from open access articles downloaded from the Europe PMC database.</p>
-<p>Basic journal- and article-related information (publisher, publication year and journal name) will be retrieved from the Europe PMC database. We will download additional information about journal impact factors from the Journal Citation Reports.</p>
+<p>Basic journal- and article-related information (publisher, publication year and journal name) will be retrieved from the Europe PMC database. We will download additional information about journal impact factors from the Journal Citation Reports (ٰ<a href="https://jcr.clarivate.com/">jcr.clarivate.com</a>).</p>
 <p>We will also calculate the proportion of articles available as open access via the Europe PMC from the total number of COVID-19-related detected in the database.</p>
 <p>We will use R <span class="citation" data-cites="R-base">(<a href="#ref-R-base" role="doc-biblioref">2</a>)</span> for searches, data handling, analysis and reporting. The searches and data export from the Europe PMC will be conducted with the europepmc package <span class="citation" data-cites="europepmc">(<a href="#ref-europepmc" role="doc-biblioref">3</a>)</span>. Transparency indicators from the available full-texts will be extracted with the rtransparent package <span class="citation" data-cites="rtransparent">(<a href="#ref-rtransparent" role="doc-biblioref">4</a>)</span>. Trends over time in transparency indicators by journal- and article-related information will be reported using descriptive tabulations and graphical illustrations, for instance using the ggplot2 package <span class="citation" data-cites="ggplot2">(<a href="#ref-ggplot2" role="doc-biblioref">5</a>)</span>.</p>
 <p>The protocol of this study will be published beforehand on the Open Science Framework website (OSF, osf.io).</p>
@@ -124,13 +124,14 @@
 </div>
 </div>
 </section>
-<section class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2>Footnotes</h2>
-
+<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>Seqiz Health Network, Kurdistan University of Medical Sciences, Seqiz, Iran.; a.sofimahmudi@gmail.com<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>Institute of Dentistry, University of Eastern Finland, Kuopio, Finland.; eero.raittio@uef.fi<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>Department of Conservative Dentistry and Oral Health &amp; Bioinformatics Research Unit, Riga Stradins University, Riga, Latvia.; sergio.uribe@rsu.lv<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p>School of Dentistry, Universidad Austral de Chile, Valdivia, Chile<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Cochrane Iran Associate Centre, National Institute for Medical Research Development (NIMAD), Tehran, Iran.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Institute of Dentistry, University of Eastern Finland, Kuopio, Finland.; eero.raittio@uef.fi<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Department of Conservative Dentistry and Oral Health &amp; Bioinformatics Research Unit, Riga Stradins University, Riga, Latvia.; sergio.uribe@rsu.lv<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>School of Dentistry, Universidad Austral de Chile, Valdivia, Chile<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 </main>
