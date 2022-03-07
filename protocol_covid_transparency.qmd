@@ -1,5 +1,5 @@
 ---
-title: "Transparency of COVID-19 medical literature"
+title: "Transparency of COVID-19-related research in medical journals"
 
 author:
   - Ahmad Sofi-Mahmudi^[Seqiz Health Network, Kurdistan University of Medical Sciences, Seqiz, Iran.; a.sofimahmudi@gmail.com] ^[Cochrane Iran Associate Centre, National Institute for Medical Research Development (NIMAD), Tehran, Iran.]
@@ -21,7 +21,7 @@ csl: vancouver.csl
 
 # Abstract
 
-**Objective and aim:** The recent pandemic has shown how crucial it is to have access to quality medical information and data that allows people to have confidence in healthcare decisions. One of these indicators is transparency, i.e., the availability of original data supporting research results. We aim to assess the use of transparency indicators (data availability, code availability, statements of protocol registration and conflicts of interest and funding disclosures) from open access COVID-19-related articles published in medical journals available from the Europe PubMed Central (PMC) database. We will map transparency in medical articles across different journals, publication years, publishers, specialties and journal impact factors.
+**Objective and aim:** The recent pandemic has shown how crucial it is to have access to quality medical information and data that allows people to have confidence in healthcare decisions. We aim to assess the use of transparency indicators (data availability, code availability, statements of protocol registration and conflicts of interest and funding disclosures) from open access COVID-19-related articles.
 
 **Methods:** We will search and export all open access articles from PubMed-indexed journals available in the Europe PMC database published between January 2020 and December 2021. We will detect transparency indicators with a validated and automated tool developed to extract the indicators from the downloaded articles. Basic journal- and article-related information will be retrieved from the PMC database. We will use R for the searches (europepmc package), data handling, analysis (rtransparent package) and reporting (ggplot2 package).
 

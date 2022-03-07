@@ -1,0 +1,22 @@
+---
+title: "Transparency of COVID-19-related research in medical journals - Appendix"
+
+author:
+  - Ahmad Sofi-Mahmudi^[Seqiz Health Network, Kurdistan University of Medical Sciences, Seqiz, Iran.; a.sofimahmudi@gmail.com] ^[Cochrane Iran Associate Centre, National Institute for Medical Research Development (NIMAD), Tehran, Iran.]
+  - Eero Raittio*^[Institute of Dentistry, University of Eastern Finland, Kuopio, Finland.; eero.raittio@uef.fi]
+  - Sergio E. Uribe^[Department of Conservative Dentistry and Oral Health & Bioinformatics Research Unit, Riga Stradins University, Riga, Latvia.; sergio.uribe@rsu.lv] ^[School of Dentistry, Universidad Austral de Chile, Valdivia, Chile]
+  
+format: html
+#format:
+#  pdf:
+#    colorlinks: true
+editor: visual
+---
+
+**Corresponding author:** Eero Raittio; **Address**: University of Eastern Finland, Institute of Dentistry, P.O. Box 1627, FI-70211 Kuopio, Finland; **Telephone**: +358 294 45 1111; **Email**: [eero.raittio\@uef.fi](mailto:eero.raittio@uef.fi).
+
+# Appendix 2
+
+```{r}
+sessionInfo()
+```

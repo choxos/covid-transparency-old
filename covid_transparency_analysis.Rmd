@@ -1,12 +1,12 @@
 ---
 title: "Transparency of COVID-19-related research - Analysis"
-author: Ahmad Sofi-Mahmudi, Eero Raittio
+author: Ahmad Sofi-Mahmudi, Eero Raittio, Sergio E Uribe
 date: "2022-02-11"
 output: html_document
 ---
 
 ```{r, setup, include=FALSE}
-knitr::opts_knit$set(root.dir = 'C:/Users/ahmad/Google Drive/Meta-Research in Dentistry/FAIRness of COVID-19 data/data/')
+knitr::opts_knit$set(root.dir = '~/Documents/GitHub/covid-transparency/data')
 ```
 
 # Loading required packages

@@ -1,0 +1,104 @@
+---
+title: "Transparency of COVID-19-related research in medical journals"
+
+author:
+  - Ahmad Sofi-Mahmudi^[Seqiz Health Network, Kurdistan University of Medical Sciences, Seqiz, Iran.; a.sofimahmudi@gmail.com] ^[Cochrane Iran Associate Centre, National Institute for Medical Research Development (NIMAD), Tehran, Iran.]
+  - Eero Raittio*^[Institute of Dentistry, University of Eastern Finland, Kuopio, Finland.; eero.raittio@uef.fi]
+  - Sergio E. Uribe^[Department of Conservative Dentistry and Oral Health & Bioinformatics Research Unit, Riga Stradins University, Riga, Latvia.; sergio.uribe@rsu.lv] ^[School of Dentistry, Universidad Austral de Chile, Valdivia, Chile]
+  
+format: html
+#format:
+#  pdf:
+#    colorlinks: true
+editor: visual
+bibliography: references.bib
+csl: vancouver.csl
+---
+
+**Corresponding author:** Eero Raittio; **Address**: University of Eastern Finland, Institute of Dentistry, P.O. Box 1627, FI-70211 Kuopio, Finland; **Telephone**: +358 294 45 1111; **Email**: [eero.raittio\@uef.fi](mailto:eero.raittio@uef.fi).
+
+**Authors' contributions:** All authors conceived and designed, and wrote and revised the protocol.
+
+# Abstract
+
+**Objective:** The recent pandemic has shown how crucial it is to have access to quality medical information and data that allows people to have confidence in healthcare decisions. We aimed to assess the use of transparency indicators (data availability, code availability, statements of protocol registration and conflicts of interest and funding disclosures) from open access COVID-19-related articles.
+
+**Methods:** We searched and exported all open-access COVID-19-related articles from PubMed-indexed journals available in the Europe PMC database published between January 2020 and December 2021. We detected transparency indicators with a validated and automated tool developed to extract the indicators from the downloaded articles. Basic journal- and article-related information were retrieved from the PMC database. We used R for the searches (europepmc package), data handling, analysis (rtransparent package) and reporting (ggplot2 package).
+
+**Results:** Of 72,999 available articles published in XX medical journals, XX% provided conflicts of interest disclosure and XX% funding disclosure and X% were preregistered. XX studies shared raw data (XX%) and XX studies shared code. Transparent practices were more common in articles published in journals with XX impact factors, and in 2020 than in 2021.
+
+**Conclusion:** While the majority of the papers had a COI disclosure, the prevalence of the other transparency practices was far from the acceptable level. A much stronger commitment to open science practices, particularly to preregistration, data and code sharing, is needed from all stakeholders.
+
+***Keywords:*** COVID-19; Data; FAIR data principles; Open Science.
+
+# Introduction
+
+The foundation of science is to generate knowledge from reproducible findings (1). Because of the failure to reproduce previous research, the open science movement emerged in recent years (2). The movement's principal focus is on making science more accessible and trustworthy. Data and code sharing, protocol registration and funding and conflicts of interest (COI) disclosures are considered important features of open science and crucial when assessing the credibility of certain scientific findings (2,3). Science without credibility and quality would do a major human, societal and economic disservice (4).
+
+COVID-19 pandemic launched an incredibly fast and voluminous avalanche of scientific publications across the different fields of science. Related to the COVID-19 publications there has been a considerable amount of discussion and examples related to poor or suboptimal data, methods and other scientific practices (5--8). Unsurprisingly, there have been signs of fabricated data, poor data and methods and conflicts of interests in the scientific literature related to the COVID-19 pandemic, which has resulted in a great number of retracted papers (208 as of the end of January 2022)(9). Probably, if transparent scientific practices, like data and code sharing, would be more like the rule than the exception in biomedical research, pre- and post-publication evaluation of the credibility of studies could be much easier (10,11).
+
+The COVID-19 pandemic and its implications for dental services, oral health, oral health-related behaviors and dental education have received great attention from the dental research community. Nevertheless, to date, only one paper related to dentistry or published in dental has been retracted from the Journal of Oral and Maxillofacial Pathology (9). However, meta-research about reporting, methods or reproducibility in COVID-19-related dental research has been limited. Particularly sharing data with adequate quality would allow reanalyses of findings (10).
+
+Our aim was to assess the uptake of transparent scientific practices (data sharing, code sharing, COI disclosures, funding disclosures, and protocol registration) from open access full-text COVID-19-related articles published in dental journals available from the Europe PubMed Central (EPMC) database. We also assessed the FAIRness (Findable, Accessible, Interoperable, and Reusable) of data from those articles that have shared their data. We mapped transparency practices across publication years, publishers and journals.
+
+# Methods
+
+The protocol of this study was published beforehand on the Open Science Framework (OSF) website ([osf.io/5kx2n](https://osf.io/5kx2n)). All code and data related to the study were shared via its OSF repository ([osf.io/x3kb6](https://osf.io/x3kb6/)) at the time of submission of the manuscript.
+
+## Data sources and study selection
+
+We searched for open access COVID-19-related articles from medical journals available in the EPMC database. We restricted our search to papers in English and considered papers published from 2020-01-01 to 2021-12-31 with variants of COVID-19 keyword in their title, keywords, or results. This enabled us to bypass screening for COVID-19-related papers and decrease the human labor for our research. We confirmed our approach by choosing a random sample of 100 papers and of those, all were relevant to COVID-19.
+
+The search query was as follows:
+
+(COVID-19 query for title, keywords, and results) AND (SRC:"MED") AND (LANG:"eng" OR LANG:"en" OR LANG:"us") AND (FIRST_PDATE:\[2020-01-01 TO 2021-12-31\]) AND ((IN_EPMC:y) OR (OPEN_ACCESS:y)) AND (PUB_TYPE:"Journal Article" OR PUB_TYPE:"research-article" OR PUB_TYPE:"rapid-communication" OR PUB_TYPE:"product-review")'
+
+The full COVID-19 query is available in Appendix 1.
+
+We downloaded all identified available records in XML full-text format (for full-text evaluation) using the metareadr package [@metareadr] from the database.
+
+## Data extraction and synthesis
+
+We assessed adherence to five transparency practices in the articles:
+
+-   data availability,
+
+-   code availability,
+
+-   conflicts of interest disclosures,
+
+-   funding disclosures,
+
+-   statements of protocol registration.
+
+To do so, we used a validated and automated tool developed by Serghiou et al. [@serghiou2021] suitable to identify these five transparent practices from articles in XML format from the EPMC database.
+
+Basic journal- and article-related information (publisher, publication year and journal name) were retrieved from the EPMC database. We downloaded additional information about journal impact factors from the Journal Citation Reports (ٰ[jcr.clarivate.com](https://jcr.clarivate.com/)).
+
+We also calculated the proportion of articles available as open-access via the Europe PMC from the total number of COVID-19-related detected in the database.
+
+## Data analysis
+
+We used R v4.1.2 [@R-base] for searches, data handling, analysis and reporting. The searches and data export from the Europe PMC were conducted with the europepmc package [@europepmc]. Transparency indicators from the available full-texts were extracted with the rtransparent package [@rtransparent]. Trends over time in transparency indicators by journal- and article-related information were reported using descriptive tabulations and graphical illustrations, for instance using the ggplot2 package [@ggplot2]. We used the numbers for sensitivity and specificity of the rtransparent package (3) to generate 95% confidence intervals (CIs) for our prevalence estimates of the transparency indicators with the epiR package [@epiR]. We also provided monthly trends for transparency indicators, to check whether there were any trends in transparency practices over time. We used Chi-square for comparing indicators between years and the Wilcoxon rank sum test to test whether there was a relationship between transparency indicators and JIFs. The thorough system information for the analysis is available in Appendix 2.
+
+# Results
+
+The total number of COVID-19-related papers (open access and non-open access) was 1038, of which full texts of 657 papers (63.3%) were accessible via the EPMC. Of those, 337 were published in 2020 and 320 in 2021. However, as we could not retrieve seven full texts from the EPMC database due to technical issues, our final sample included 650 full-text articles (Supplementary figure 1).
+
+These articles were published in 59 journals of which the top five were British Dental Journal (n=69), Journal of Dental Education (n=59), British Journal of Oral and Maxillofacial Surgery (n=51), Oral Diseases (n=47), and BMC Oral Health (n=40). The mean and the median of the number of citations to these articles were 7.7 (standard deviation (SD) = 43.15) and 2 (interquartile range (IQR) = 5). The highest cited article with 854 citations was an article published in the International Journal of Oral Sciences in 2020 (20).
+
+About three-fourths of the articles (n=478) had a statement to disclose COI (73.5%, 95% CI: 70.0%--76.8%). Articles published in 2021 had a higher rate of COI disclosure (79.6% vs 67.8%, P \< 0.001). About four-tenths of the references had a funding statement (n=261) (40.2%, 95% CI: 36.5%--43.0%). Articles in 2021 had a funding statement more frequently than 2020 articles (49.1% vs 31.6%, P \< 0.001). Less than 1 in 20 of the articles (n=27) were registered beforehand (4.2%, 95% CI: 2.9%--6.0%) and the rate was six times higher in 2021 compared with 2020 (7.2% vs 1.1%, P \< 0.001). Regarding data and code availability, as we chose the software to have low specificity to be as sensitive as possible, we got some false positives. At first, we got four papers with shared data and none with shared code. After checking manually, we omitted four false positives from the shared data papers. One of them used the journal's template: "The data that support the findings of this study are openly available in \[repository name\] at \[DOI\]" (21). Hence finally, one paper had shared data (0.2%). This article was published in BMC Oral Health in 2021 (22).
+
+A total of 117 articles were published in journals with no impact factor. Papers that had a COI disclosure, funding statement and were registered tend to be published in journals with higher JIF (P = 0.003, \< 0.001, and = 0.007, respectively). Detailed information is illustrated in Table 1.
+
+Figure 1 shows the monthly trend for three transparency indicators. There was an inconsistent trend for the indicators. However, the COI disclosure percentage seemed to be more consistent and showed an increasing trend over time.
+
+# Discussion
+
+## Limitations
+
+The study sample will be restricted to open access articles in the Europe PMC database which may not correspond to all COVID-19-related studies published in medical journals. However, as the majority of COVID-19-related papers are open access[@Kiley2020-ek], this will not diminish the strength of our interpretations considerably.
+
+# Conclusion
+
+# References
