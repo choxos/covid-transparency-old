@@ -2,7 +2,3 @@
 .Rhistory
 .RData
 .Ruserdata
-data/covid_transparency_opendata.csv
-data/covid_transparency_results_all.csv
-data/covid_transparency_results_data_code.csv
-data/covid_transparency_db.csv
