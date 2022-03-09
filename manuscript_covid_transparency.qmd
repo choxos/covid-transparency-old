@@ -87,13 +87,26 @@ The total number of COVID-19-related papers (open access and non-open access) wa
 
 These articles were published in 4892 journals of which the top five were PLoS ONE (n=6825), International Journal of Environmental Research and Public Health (n=2686), Medicine (n=2318), BMJ Open (n=1926), and eLife (n=942). The mean and the median of the number of citations to these articles were 3.1 (standard deviation (SD) = 21.76) and 0 (interquartile range (IQR) = 2). The highest cited article with 2915 citations was an article published in the Cell in 2020 [@Walls2020].
 
-More than nine-tenth of the articles (n=67009) had a statement to disclose COI (91.79%, 95% CI: 91.59%--91.99%). Articles published in 2021 had a higher rate of COI disclosure (93.2% vs 90.1	%, P \< 0.001). More than eight-tenths of the references had a funding statement (n=60530) (82.92%, 95% CI: 82.64%--83.19%). Articles in 2021 had a funding statement more frequently than 2020 articles (83.9% vs 81.7%, P \< 0.001). Less than 1 in 6 of the articles (n=11457) were registered beforehand (15.69%, 95% CI: 15.43%--15.96%) and the rate was higher in 2021 compared with 2020 (16.2% vs 15.0%, P \< 0.001).
+More than nine-tenth of the articles (n=67009) had a statement to disclose COI (91.79%, 95% CI: 91.59%--91.99%). Articles published in 2021 had a higher rate of COI disclosure (93.2% vs 90.1 %, P \< 0.001). More than eight-tenths of the references had a funding statement (n=60530) (82.92%, 95% CI: 82.64%--83.19%). Articles in 2021 had a funding statement more frequently than 2020 articles (83.9% vs 81.7%, P \< 0.001). Less than 1 in 6 of the articles (n=11457) were registered beforehand (15.69%, 95% CI: 15.43%--15.96%) and the rate was higher in 2021 compared with 2020 (16.2% vs 15.0%, P \< 0.001).
 
-Regarding data and code availability, as we chose the software to have low specificity to be as sensitive as possible, we got some false positives. Less than 1 in 7 articles had shared their data (n=9493) (13.00%, 95% CI: %--%). Articles in 2021 had shared data more frequently than 2020 articles (13.2% vs 12.8%, P \< 0.001). Less than 1 in 30 of the articles (n=2264) had shared their code (3.10%, 95% CI: %--%) and the rate was higher in 2021 compared with 2020 (3.3% vs 2.8%, P \< 0.001).
+Regarding data and code availability, less than 1 in 7 articles had shared their data (n=9493) (13.00%, 95% CI: 12.76%--13.25%). Articles in 2021 had shared data more frequently than 2020 articles (13.2% vs 12.8%, P=0.1287). Less than 1 in 30 of the articles (n=2264) had shared their code (3.10%, 95% CI: 2.98%--3.23%) and the rate was higher in 2021 compared with 2020 (3.3% vs 2.8%, P \< 0.001).
 
-A total of 51601 articles were published in journals with no impact factor. Papers that had a COI disclosure, funding statement and were registered tend to be published in journals with higher JIF (P = 0.003, \< 0.001, and = 0.007, respectively). Detailed information is illustrated in Table 1.
+A total of 51601 articles were published in journals with no impact factor. Papers that had a COI disclosure, funding statement and were registered tend to be published in journals with lower JIF (P = 0.003, \< 0.001, and = 0.007, respectively). Detailed information is illustrated in Table 1.
 
-Figure 1 shows the monthly trend for three transparency indicators. There was an inconsistent trend for the indicators. However, the COI disclosure percentage seemed to be more consistent and showed an increasing trend over time.
+| Measurement       | Mean (SD)       |                | Median (IQR)  |               | P-value  |
+|-------------------|-----------------|----------------|---------------|---------------|----------|
+|                   | With            | Without        | With          | Without       |          |
+| COI disclosure    | 4.097 (2.0086)  | 7.442 (2.1377) | 3.709 (2.253) | 8.483 (0.000) | \< 0.001 |
+| Funding statement | 4.085 (1.9627)  | 5.670 (2.8597) | 3.706 (2.253) | 4.773 (4.900) | \< 0.001 |
+| Registration      | 3.808 (1.9459	) | 4.396 (2.1769) | 2.863 (1.973) | 4.003 (2.774) | \< 0.001 |
+| Data sharing      | 4.411 (2.3977)  | 4.251 (2.1221) | 4.057 (2.545) | 3.763 (2.519) | 0.03679  |
+| Code sharing      | 5.891 (4.5176)  | 4.239 (2.0812) | 4.262 (2.927) | 3.800 (2.519) | \< 0.001 |
+
+P-value based on the Wilcoxon rank sum test.
+
+COI: Conflict of interest; SD: Standard deviation; IQR: Inter-quartile range.
+
+Figure 1 shows the monthly trend for three transparency indicators. According to the figure, there was an inconsistent trend for the indicators. However, the COI disclosure and data sharing percentages showed an increasing trend over time.
 
 # Discussion
 
