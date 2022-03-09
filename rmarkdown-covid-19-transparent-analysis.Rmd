@@ -5,22 +5,27 @@ date: "2022-02-11"
 output: html_document
 ---
 
-```{r, setup, include=FALSE}
-knitr::opts_knit$set(root.dir = '~/Documents/GitHub/covid-transparency/data')
-```
-
 # Loading required packages
 
 ```{r}
-pacman::p_load(dplyr,
+pacman::p_load(tidyverse,
+               lubridate, 
+               here, 
                ggplot2,
                knitr)
 ```
 
+
+```{r, setup, include=FALSE}
+# knitr::opts_knit$set(root.dir = '~/Documents/GitHub/covid-transparency/data')
+```
+
+
+
 # Loading the datasets
 First, set working directory to the folder that has all the datasets in it using setwd() function and then run the following code:
 ```{r}
-opendata <- read.csv("covid_transparency_opendata.csv")
+opendata <- read.csv(here("data", "covid_transparency_opendata.csv"))
 ```
 
 
@@ -34,17 +39,11 @@ kable(data.frame(hits_all = 92752,
 
 First, adding the real publication year and month to the datasets. The real publication year/month is the year/month the paper was first appear online stored in firstPublicationDate column.
 ```{r}
-library(lubridate)
-
 opendata <- opendata %>%
-  mutate(year_firstpub = year(
-    as.POSIXlt(firstPublicationDate, 
-               format = "%Y-%m-%d")),
-    month_firstpub = month(
-      as.POSIXlt(firstPublicationDate, 
-               format = "%Y-%m-%d")
-    )
-    )
+        mutate(year_firstpub = year(as.POSIXlt(firstPublicationDate,
+                                               format = "%Y-%m-%d")),
+               month_firstpub = month(as.POSIXlt(firstPublicationDate,
+                                                 format = "%Y-%m-%d")))
 ```
 
 
@@ -59,8 +58,22 @@ length(table(opendata$journal))
 ```
 Top 10 journals with the highest number of articles in our dataset, from high to low:
 ```{r}
-kable(head(table(opendata$journal) %>% as.data.frame() %>% arrange(desc(Freq)), 10))
+kable(head(table(opendata$journal) 
+           %>% as.data.frame() 
+           %>% arrange(desc(Freq)), 10))
 ```
+
+Also, same table, but with all the journals
+
+```{r}
+opendata %>% 
+        mutate(journal = fct_lump_prop(journal, prop = 0.01) ) %>% 
+        count(journal) %>% 
+        arrange(desc(n)) %>% 
+        knitr::kable()
+```
+
+
 
 The mean and the median of the number of citations to these references:
 ```{r}
