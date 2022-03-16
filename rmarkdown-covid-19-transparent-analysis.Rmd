@@ -32,9 +32,9 @@ opendata <- read.csv(here("data", "covid_transparency_opendata.csv"))
 # Results
 Number of all papers (open access and non open access), open-access papers and open-access percentage:
 ```{r}
-kable(data.frame(hits_all = 92752, 
+kable(data.frame(hits_all = 175550, 
            hits_oa = nrow(opendata),
-           oa_percentage = round((nrow(opendata)/92752)*100, 2)))
+           oa_percentage = round((nrow(opendata)/175550)*100, 2)))
 ```
 
 First, adding the real publication year and month to the datasets. The real publication year/month is the year/month the paper was first appear online stored in firstPublicationDate column.
@@ -88,7 +88,7 @@ kable(data.frame(Mean = round(mean(opendata$citedByCount),1),
 Characteristics of the paper with the highest number of citations:
 ```{r}
 kable(opendata[which.max(opendata$citedByCount),] %>% 
-  select(pmid, pmcid, doi.x, title, authorString, journalTitle, pubYear))
+  select(citedByCount, pmid, pmcid, doi.x, title, authorString, journalTitle, pubYear))
 ```
 
 The number and percentage of papers with a conflict of interest (CoI) disclosure:
@@ -233,7 +233,7 @@ chisq.test(opendata$is_open_code, opendata$year_firstpub)
 
 First, importing jif file:
 ```{r}
-jif <- read.csv("jif_2020.csv")
+jif <- read.csv(here("data", "jif_2020.csv"))
 ```
 
 Merging it with opendata:
