@@ -51,7 +51,7 @@ We searched for open access COVID-19-related articles from medical journals avai
 
 The search query was as follows:
 
-(COVID-19 query for title, keywords, and results) AND (SRC:"MED") AND (LANG:"eng" OR LANG:"en" OR LANG:"us") AND (FIRST_PDATE:\[2020-01-01 TO 2021-12-31\]) AND ((IN_EPMC:y) OR (OPEN_ACCESS:y)) AND (PUB_TYPE:"Journal Article" OR PUB_TYPE:"research-article" OR PUB_TYPE:"rapid-communication" OR PUB_TYPE:"product-review")'
+(COVID-19 query for title, keywords, and results) AND (SRC:"MED") AND (LANG:"eng" OR LANG:"en" OR LANG:"us") AND (FIRST_PDATE:\[2020-01-01 TO 2021-12-31\]) AND (OPEN_ACCESS:y) AND (PUB_TYPE:"Journal Article" OR PUB_TYPE:"research-article" OR PUB_TYPE:"rapid-communication" OR PUB_TYPE:"product-review")'
 
 The full COVID-19 query is available in Appendix 1.
 
@@ -83,30 +83,34 @@ We used R v4.1.2 [@R-base] for searches, data handling, analysis and reporting. 
 
 # Results
 
-The total number of COVID-19-related papers (open access and non-open access) was 92752, of which full texts of 73042 papers (78.7%) were accessible via the EPMC. Of those, 33137 were published in 2020 and 39905 in 2021. However, as we could not retrieve 43 full texts from the EPMC database due to technical issues, our final sample included 72999 full-text articles (Appendix 3).
+The total number of COVID-19-related papers (open access and non-open access) was 175550, of which full texts of 133470 papers (76.0%) were accessible as open-access via the EPMC. However, 852 (0.6%) were not downloadable because of technical issues and thus were excluded from our analyses. Of those 132618 remaining articles, 47550 were published in 2020, 75857 in 2021, and 9211 in the first two months of 2022 (Appendix 3).
 
-These articles were published in 4892 journals of which the top five were PLoS ONE (n=6825), International Journal of Environmental Research and Public Health (n=2686), Medicine (n=2318), BMJ Open (n=1926), and eLife (n=942). The mean and the median of the number of citations to these articles were 3.1 (standard deviation (SD) = 21.76) and 0 (interquartile range (IQR) = 2). The highest cited article with 2915 citations was an article published in the Cell in 2020 [@Walls2020].
+These articles were published in 6084 journals of which the top five were International Journal of Environmental Research and Public Health (n=3711), PLoS ONE (n=3059), Scientific Reports (n=1717), Frontiers in Public Health (n=1351), and Frontiers in Psychology (n=1341). The mean and the median of the number of citations to these articles were 12.0 (standard deviation (SD) = 92.27) and 2 (interquartile range (IQR) = 7). The highest cited article with 15549 citations was an article published in the Lancet in 2020 [@huang2020].
 
-More than nine-tenth of the articles (n=67009) had a statement to disclose COI (91.79%, 95% CI: 91.59%--91.99%). Articles published in 2021 had a higher rate of COI disclosure (93.2% vs 90.1 %, P \< 0.001). More than eight-tenths of the references had a funding statement (n=60530) (82.92%, 95% CI: 82.64%--83.19%). Articles in 2021 had a funding statement more frequently than 2020 articles (83.9% vs 81.7%, P \< 0.001). Less than 1 in 6 of the articles (n=11457) were registered beforehand (15.69%, 95% CI: 15.43%--15.96%) and the rate was higher in 2021 compared with 2020 (16.2% vs 15.0%, P \< 0.001).
+About nine-tenth of the articles (n=115405) had a statement to disclose COI (87.0%, 95% CI: 86.8%--87.2%). Articles published in 2022 had a higher rate of COI disclosure (91.4% vs 89.1% for 2021, and 82.9% for 2020, P \< 0.001). More than two-thirds of the references had a funding statement (n=91425) (68.9%, 95% CI: 68.7%--69.2%). Articles in 2022 had a funding statement more frequently than two other years (79.0% vs 73.1% for 2021, and 60.4% for 2020, P \< 0.001). Less than 1 in 25 of the articles (n=4708) were registered beforehand (3.6%, 95% CI: 3.5%--3.7%) and the rate was higher in 2022 (5.4% vs 4.2% for 2021, and 2.2% for 2020, P \< 0.001).
 
-Regarding data and code availability, less than 1 in 7 articles had shared their data (n=9493) (13.00%, 95% CI: 12.76%--13.25%). Articles in 2021 had shared data more frequently than 2020 articles (13.2% vs 12.8%, P=0.1287). Less than 1 in 30 of the articles (n=2264) had shared their code (3.10%, 95% CI: 2.98%--3.23%) and the rate was higher in 2021 compared with 2020 (3.3% vs 2.8%, P \< 0.001).
+Regarding data and code availability, less than 1 in 11 articles had shared their data (n=11552) (8.7%, 95% CI: 8.6%--8.9%). Articles in 2022 had shared data more frequently (11.9% vs 9.6% for 2021, and 6.7% for 2020, P \< 0.001). Less than 1 in 30 of the articles (n=4055) had shared their code (3.1%, 95% CI: 3.0%--3.2%) and the rate was higher in 2022 (4.0% vs 3.5% for 2021, and 2.2 for 2020, P \< 0.001).
 
-A total of 51601 articles were published in journals with no impact factor. Papers that had a COI disclosure, funding statement and were registered tend to be published in journals with lower JIF (P = 0.003, \< 0.001, and = 0.007, respectively). Detailed information is illustrated in Table 1.
+A total of 38383 articles were published in journals with a Journal Impact Factor (JIF). Papers that had a COI disclosure, funding statement and were registered tend to be published in journals with lower JIF (P = 0.003, \< 0.001, and = 0.007, respectively). Detailed information is illustrated in Table 1.
 
-| Measurement       | Mean (SD)       |                | Median (IQR)  |               | P-value  |
-|-------------------|-----------------|----------------|---------------|---------------|----------|
-|                   | With            | Without        | With          | Without       |          |
-| COI disclosure    | 4.097 (2.0086)  | 7.442 (2.1377) | 3.709 (2.253) | 8.483 (0.000) | \< 0.001 |
-| Funding statement | 4.085 (1.9627)  | 5.670 (2.8597) | 3.706 (2.253) | 4.773 (4.900) | \< 0.001 |
-| Registration      | 3.808 (1.9459 ) | 4.396 (2.1769) | 2.863 (1.973) | 4.003 (2.774) | \< 0.001 |
-| Data sharing      | 4.411 (2.3977)  | 4.251 (2.1221) | 4.057 (2.545) | 3.763 (2.519) | 0.03679  |
-| Code sharing      | 5.891 (4.5176)  | 4.239 (2.0812) | 4.262 (2.927) | 3.800 (2.519) | \< 0.001 |
+Table 1. Citations and journal impact factor by transparency indicators.
 
-P-value based on the Wilcoxon rank sum test.
+|                    | Citations to article |         |          | Journal Impact Factor |            |          |
+|-----------|-----------|-----------|-----------|:----------|:----------|-----------|
+| Measurement        | Median (IQR)         |         | P-Value  | Median (IQR)          |            | P-value  |
+|                    | With                 | Without |          | With                  | Without    |          |
+| COI disclosure     | 2 (6)                | 2 (7)   | \< 0.001 | 4.1 (2.31)            | 7.2 (5.12) | \< 0.001 |
+| Funding disclosure | 2 (6)                | 2 (8)   | \< 0.001 | 4.1 (2.32)            | 4.1 (2.94) | \< 0.001 |
+| Registration       | 1 (5)                | 2 (6)   | \< 0.001 | 3.8 (2.38)            | 4.2 (2.44) | \< 0.001 |
+| Data sharing       | 2 (8)                | 2 (6)   | \< 0.001 | 4.0 (2.98)            | 4.1 (2.36) | \< 0.001 |
+| Code sharing       | 2 (8)                | 2 (6)   | 0.70     | 4.4 (4.41)            | 4.1 (2.32) | 0.08     |
 
+: P-value based on the Wilcoxon rank sum test.\
 COI: Conflict of interest; SD: Standard deviation; IQR: Inter-quartile range.
 
-Figure 1 shows the monthly trend for three transparency indicators. According to the figure, there was an inconsistent trend for the indicators. However, the COI disclosure and data sharing percentages showed an increasing trend over time.
+Over half of the papers had two transparency indicators (n=74085, 55.9%). Less than 0.1% (n=45) had all five indicators while 9.0% (n=11890) had no indicators. Among papers with two transparency indicators, the majority had COI and funding disclosures (99.3% and 97.9%, respectively).
+
+Figure 1 shows the monthly trend for three transparency indicators. According to the figure, all indicators showed increasing monthly trend. However, the increasing trends for COI and funding disclosures were steeper compared to three other indicators.
 
 # Discussion
 
