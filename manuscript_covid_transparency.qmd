@@ -79,7 +79,7 @@ We also calculated the proportion of articles available as open-access via the E
 
 ## Data analysis
 
-We used R v4.1.2 [@R-base] for searches, data handling, analysis and reporting. The searches and data export from the Europe PMC were conducted with the europepmc package [@europepmc]. Transparency indicators from the available full-texts were extracted with the rtransparent package [@rtransparent]. Trends over time in transparency indicators by journal- and article-related information were reported using descriptive tabulations and graphical illustrations, for instance using the ggplot2 package [@ggplot2]. We used the numbers for sensitivity and specificity of the rtransparent package (3) to generate 95% confidence intervals (CIs) for our prevalence estimates of the transparency indicators with the epiR package [@epiR]. We also provided monthly trends for transparency indicators, to check whether there were any trends in transparency practices over time. We used Chi-square for comparing indicators between years and the Wilcoxon rank sum test to test whether there was a relationship between transparency indicators and JIFs. The thorough system information for the analysis is available in Appendix 2.
+We used R v4.1.2 [@R-base] for searches, data handling, analysis and reporting. The searches and data export from the Europe PMC were conducted with the europepmc package [@europepmc]. Transparency indicators from the available full-texts were extracted with the rtransparent package [@rtransparent]. Trends over time in transparency indicators by journal- and article-related information were reported using descriptive tabulations and graphical illustrations, for instance using the ggplot2 package [@ggplot2]. We used the numbers for sensitivity and specificity of the rtransparent package (3) to generate 95% confidence intervals (CIs) for our prevalence estimates of the transparency indicators with the epiR package [@epiR]. We also provided monthly trends for transparency indicators, to check whether there were any trends in transparency practices over time. We used Chi-square for comparing indicators between years and the Wilcoxon rank sum test to test whether there was a relationship of transparency indicators with citations to articles and JIFs. The thorough system information for the analysis is available in Appendix 2.
 
 # Results
 
@@ -96,7 +96,7 @@ A total of 38383 articles were published in journals with a Journal Impact Facto
 Table 1. Citations and journal impact factor by transparency indicators.
 
 |                    | Citations to article |         |          | Journal Impact Factor |            |          |
-|-----------|-----------|-----------|-----------|:----------|:----------|-----------|
+|--------------------|----------------------|---------|----------|:----------------------|:-----------|----------|
 | Measurement        | Median (IQR)         |         | P-Value  | Median (IQR)          |            | P-value  |
 |                    | With                 | Without |          | With                  | Without    |          |
 | COI disclosure     | 2 (6)                | 2 (7)   | \< 0.001 | 4.1 (2.31)            | 7.2 (5.12) | \< 0.001 |
@@ -113,6 +113,10 @@ Over half of the papers had two transparency indicators (n=74085, 55.9%). Less t
 Figure 1 shows the monthly trend for three transparency indicators. According to the figure, all indicators showed increasing monthly trend. However, the increasing trends for COI and funding disclosures were steeper compared to three other indicators.
 
 # Discussion
+
+Adherence to transparency practices increased over time in COVID-19 related medical literature. Adherence to reporting COI disclosure was high throughout study period. Code sharing and protocol registration were rare, but improved little over study period.
+
+Adherence to transparency practices was similar in COVID-19 related literature than in other biomedical literature.
 
 ## Limitations
 
