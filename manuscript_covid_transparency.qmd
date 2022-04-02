@@ -116,11 +116,11 @@ Figure 1 shows the monthly trend for three transparency indicators. According to
 
 Adherence to transparency practices increased over time in COVID-19 related medical literature. Adherence to reporting COI disclosure was high throughout study period. Code sharing and protocol registration were rare, but improved little over study period.
 
-Adherence to transparency practices was similar in COVID-19 related literature than in other biomedical literature.
+Adherence to transparency practices was at similar level in COVID-19 related literature than in other biomedical literature. This is surprising particularly when considering worldwide, remarkable and noble initiatives related to enhancing open science to tackle the pandemic. As early as in January 2020, over 100 organizations, including journals, publishers, funders, universities and other institutions, signed a statement that aimed to ensure free access to research data, tools and other information related to COVID-19 [@vuong2022; @coronavi]. Later also other initiatives to support the goal emerged, for instance COVID-19 Open Research Dataset (CORD-19)[@cord-19], a free resource of over 280,000 articles about the COVID-19 virus. However, it is possible that the algorithms used here did not efficiently detect all different ways of sharing data and material emerged after the pandemic, because the algorithms were validated before the pandemic [@serghiou2021].
 
 ## Limitations
 
-The study sample will be restricted to open access articles in the Europe PMC database which may not correspond to all COVID-19-related studies published in medical journals. However, as the majority of COVID-19-related papers are open access[@Kiley2020-ek], this will not diminish the strength of our interpretations considerably.
+Despite we used representative data and validated methods to investigate transparency practices in COVID-19-related research, our study has some weaknesses. The study sample was restricted to open access articles in the EPMC database which may not correspond to all COVID-19-related studies published in medical journals. At least in general, the differences in transparency practices between open access and non-open access articles from Europe PMC are rather similar [@wallach2018a]. However, as the majority of COVID-19-related papers were available via EPMC (76%), this does not diminish the strength of our interpretations considerably.
 
 # Conclusion
 
