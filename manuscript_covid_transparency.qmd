@@ -21,25 +21,21 @@ csl: vancouver.csl
 
 # Abstract
 
-**Objective:** The recent pandemic has shown how crucial it is to have access to quality medical information and data that allows people to have confidence in healthcare decisions. We aimed to assess the use of transparency indicators (data availability, code availability, statements of protocol registration and conflicts of interest and funding disclosures) from open access COVID-19-related articles.
+**Objective:** The recent pandemic has shown how crucial it is to have access to quality medical information and data that allows people to have confidence in healthcare decisions. We aimed to assess the use of transparency indicators (data availability, code availability, statements of protocol registration and conflicts of interest and funding disclosures) from open access Coronavirus disease 2019 (COVID-19) related articles.
 
 **Methods:** We searched and exported all open-access COVID-19-related articles from PubMed-indexed journals available in the Europe PMC database published between January 2020 and December 2021. We detected transparency indicators with a validated and automated tool developed to extract the indicators from the downloaded articles. Basic journal- and article-related information were retrieved from the PMC database. We used R for the searches (europepmc package), data handling, analysis (rtransparent package) and reporting (ggplot2 package).
 
-**Results:** Of 72,999 available articles published in XX medical journals, XX% provided conflicts of interest disclosure and XX% funding disclosure and X% were preregistered. XX studies shared raw data (XX%) and XX studies shared code. Transparent practices were more common in articles published in journals with XX impact factors, and in 2020 than in 2021.
+**Results:** Of 72,999 available articles published in XX medical journals, 87.0%, (95% CI: 86.8%--87.2%) provided conflicts of interest disclosure and 68.9% (95% CI: 68.7%--69.2%) funding disclosure and 3.6%, (95% CI: 3.5%--3.7%) were preregistered. 8.7% (95% CI: 8.6%--8.9%) of studies shared raw data and 3.1% (95% CI: 3.0%--3.2%) of studies shared code. Transparent practices were more common in articles published in 2021 than in 2020.
 
-**Conclusion:** While the majority of the papers had a COI disclosure, the prevalence of the other transparency practices was far from the acceptable level. A much stronger commitment to open science practices, particularly to preregistration, data and code sharing, is needed from all stakeholders.
+**Conclusion:** While the majority of the papers had a COI disclosure, the prevalence of the other transparency practices was far from the acceptable level. Even surprisingly low, particularly in terms of data sharing, taking into account global initiatives to improve open science in COVID-19 related research. A much stronger commitment to open science practices, particularly to preregistration, data and code sharing, is needed from all stakeholders.
 
 ***Keywords:*** COVID-19; Data; FAIR data principles; Open Science.
 
 # Introduction
 
-The foundation of science is to generate knowledge from reproducible findings (1). Because of the failure to reproduce previous research, the open science movement emerged in recent years (2). The movement's principal focus is on making science more accessible and trustworthy. Data and code sharing, protocol registration and funding and conflicts of interest (COI) disclosures are considered important features of open science and crucial when assessing the credibility of certain scientific findings (2,3). Science without credibility and quality would do a major human, societal and economic disservice (4).
+COVID-19 pandemic launched an incredibly fast and voluminous avalanche of scientific publications across the different fields of science. There has been discussion and many examples related to poor or suboptimal data, methods and other scientific practices in COVID-19-related studies [@Glasziou2020; @besançon2021; @luengo-oroz2020; @schwab2020\]. However, in addition to fast and successful development of safe and effective vaccination, it is possible that transparent scientific practices, like data and code sharing, have helped to fight pandemic globally \[@besançon2021; @vuong2022\]. That being said, comprehensive picture of transparency practices in COVID-19-related medical literature is still lacking. As an example, it is unknown whether open science initiatives related to COVID-19 pandemic \[@besançon2021; @vuong2022], for instance related to data sharing, led to higher number of articles sharing data in COVID-19 research compared to what has been seen in studies in general in biomedical literature [@serghiou2021].
 
-COVID-19 pandemic launched an incredibly fast and voluminous avalanche of scientific publications across the different fields of science. Related to the COVID-19 publications there has been a considerable amount of discussion and examples related to poor or suboptimal data, methods and other scientific practices (5--8). Unsurprisingly, there have been signs of fabricated data, poor data and methods and conflicts of interests in the scientific literature related to the COVID-19 pandemic, which has resulted in a great number of retracted papers (208 as of the end of January 2022)(9). Probably, if transparent scientific practices, like data and code sharing, would be more like the rule than the exception in biomedical research, pre- and post-publication evaluation of the credibility of studies could be much easier (10,11).
-
-The COVID-19 pandemic and its implications for dental services, oral health, oral health-related behaviors and dental education have received great attention from the dental research community. Nevertheless, to date, only one paper related to dentistry or published in dental has been retracted from the Journal of Oral and Maxillofacial Pathology (9). However, meta-research about reporting, methods or reproducibility in COVID-19-related dental research has been limited. Particularly sharing data with adequate quality would allow reanalyses of findings (10).
-
-Our aim was to assess the uptake of transparent scientific practices (data sharing, code sharing, COI disclosures, funding disclosures, and protocol registration) from open access full-text COVID-19-related articles published in dental journals available from the Europe PubMed Central (EPMC) database. We also assessed the FAIRness (Findable, Accessible, Interoperable, and Reusable) of data from those articles that have shared their data. We mapped transparency practices across publication years, publishers and journals.
+Our aim was to assess the adherence to transparent scientific practices (data sharing, code sharing, conflict of interest, COI, disclosures, funding disclosures, and protocol registration) from open access full-text COVID-19-related articles published in PubMed indexed journals from the Europe PubMed Central (EPMC) database. We mapped adherence to transparency practices across time, journal impact factor (JIF) and citations articles have received
 
 # Methods
 
@@ -47,7 +43,7 @@ The protocol of this study was published beforehand on the Open Science Framewor
 
 ## Data sources and study selection
 
-We searched for open access COVID-19-related articles from medical journals available in the EPMC database. We restricted our search to papers in English and considered papers published from 2020-01-01 to 2021-12-31 with variants of COVID-19 keyword in their title, keywords, or results. This enabled us to bypass screening for COVID-19-related papers and decrease the human labor for our research. We confirmed our approach by choosing a random sample of 100 papers and of those, all were relevant to COVID-19.
+We searched for open access COVID-19-related PubMed-indexed articles available in the EPMC database. We restricted our search to papers in English and considered papers published from 2020-01-01 to 2021-12-31 with variants of COVID-19 keyword in their title, keywords, or results. This enabled us to bypass screening for COVID-19-related papers and decrease the human labor for our research. We confirmed our approach by choosing a random sample of 100 papers and of those, all were relevant to COVID-19.
 
 The search query was as follows:
 
@@ -65,7 +61,7 @@ We assessed adherence to five transparency practices in the articles:
 
 -   code availability,
 
--   conflicts of interest disclosures,
+-   COI disclosures,
 
 -   funding disclosures,
 
@@ -75,7 +71,7 @@ To do so, we used a validated and automated tool developed by Serghiou et al. [@
 
 Basic journal- and article-related information (publisher, publication year and journal name) were retrieved from the EPMC database. We downloaded additional information about journal impact factors from the Journal Citation Reports (ٰ[jcr.clarivate.com](https://jcr.clarivate.com/)).
 
-We also calculated the proportion of articles available as open-access via the Europe PMC from the total number of COVID-19-related detected in the database.
+We also calculated the proportion of articles available as open-access full-texts via the Europe PMC from the total number of COVID-19-related articles in the database.
 
 ## Data analysis
 
@@ -114,18 +110,14 @@ Figure 1 shows the monthly trend for three transparency indicators. According to
 
 # Discussion
 
-Adherence to transparency practices increased over time in COVID-19 related medical literature during 2020-2021. Adherence to reporting COI disclosure was high throughout study period, in addition most of articles had funding disclosure. Data sharing, code sharing and protocol registration were rare, but improved little over study period. Conflicts of interest disclosures seemed to be more common in articles published in lower impact journals, otherwise differences in transparency practices according to received citations and JIF were small.
+Adherence to transparency practices increased over time in COVID-19 related medical literature during 2020-2021. Adherence to reporting COI disclosure was high throughout study period, in addition most of articles had funding disclosure. Data sharing, code sharing and protocol registration were rare, but improved little over study period. COI disclosures seemed to be more common in articles published in lower impact journals, otherwise differences in transparency practices according to received citations and JIF were small.
 
-Adherence to transparency practices was at similar level in COVID-19 related literature than in other biomedical literature. This is surprising particularly when considering worldwide, remarkable and noble initiatives related to enhancing open science to tackle the pandemic. As early as in January 2020, over 100 organizations, including journals, publishers, funders, universities and other institutions, signed a statement that aimed to ensure free access to research data, tools and other information related to COVID-19 [@vuong2022; @coronavi]. Later also other initiatives to support the goal emerged, for instance COVID-19 Open Research Dataset (CORD-19)[@cord-19], a free resource of over 280,000 articles about the COVID-19 virus. However, it is possible that the algorithms used here did not efficiently detect all different ways of sharing data and material emerged after the pandemic, because the algorithms were validated before the pandemic [@serghiou2021].
+Adherence to transparency practices was at similar level in COVID-19 related literature than in other biomedical literature analyzed with the same methods (see Fig 3 in [@serghiou2021\]). This is surprising particularly when considering worldwide, remarkable and noble initiatives related to enhancing open science to tackle the pandemic. As early as in January 2020, over 100 organizations, including journals, publishers, funders, universities and other institutions, signed a statement that aimed to ensure free access to research data, tools and other information related to COVID-19 \[@vuong2022; @coronavi]. Later also other initiatives to support the goal emerged, for instance COVID-19 Open Research Dataset (CORD-19)[@cord-19], a free resource of over 280,000 articles about the COVID-19 virus. However, it is possible that the algorithms used here did not efficiently detect all different ways of sharing data and material emerged after the pandemic, because the algorithms were validated before the pandemic [@serghiou2021].
 
-In comparison to other studies on the transparency of COVID-19 related research is difficult due to different methodology and scale of our research. However, it seems that data sharing was little less common than in our sample than what was the proportion detected in the begininning of the pandemic measured by the investigation of associated data in PubMed Central [@lucas-dominguez2021\]. In addition, the proportion of studies which shared data in our study sample was lower than in COVID-19 related preprints shared via medRxiv and bioRxiv \[@strcic2022\]. Lacking preregisteration, sharing code and conflicts of interest have go attention during the pandemic \[@Glasziou2020; @besançon2021; @luengo-oroz2020], however we are not aware of the investigation of transparency practices in these aspects in COVID-19 related research.
-
-## Limitations
+In comparison to other studies on the transparency of COVID-19 related research is difficult due to different methodologies and scale of our research. However, it seems that data sharing was little less common than in our sample than what was the proportion detected in the beginning of the pandemic measured by the investigation of associated data in PubMed Central [@lucas-dominguez2021\]. In addition, the proportion of studies which shared data in our study sample was lower than in COVID-19 related preprints shared via medRxiv and bioRxiv \[@strcic2022\]. Lacking preregisteration, sharing code and COI have got attention during the pandemic \[@Glasziou2020; @besançon2021; @luengo-oroz2020], however we are not aware of the investigation of transparency practices in these aspects in COVID-19 related research in this scale in medical research.
 
 Despite we used representative data and validated methods to investigate transparency practices in COVID-19-related research, our study has some weaknesses. The study sample was restricted to open access articles in the EPMC database which may not correspond to all COVID-19-related studies published in medical journals. At least in general, the differences in transparency practices between open access and non-open access articles from Europe PMC are rather similar [@wallach2018a]. However, as the majority of COVID-19-related papers were available via EPMC (76%), this does not diminish the strength of our interpretations considerably.
 
-# Conclusion
-
-Transparency is crucial to ensure the credibility of science and enable its assessment. It has been argued that open science, including transparency practices such as the ones we investigated here, have helped to fight pandemic globally [@besançon2021; @vuong2022]. However, your findings showed suboptimal adherence to data and code sharing and pre-registeration in COVID-19 related research, whilst majority of researchers had adhered to disclose funding and conflicts of interests related to their COVID-19 related medical research. Stronger commitment to open science practices, particularly to preregistration, data and code sharing, is needed from all stakeholders.
+Transparency is crucial to ensure the credibility of science and enable its assessment. Transparent scientific practices, like the ones we investigated here, have helped to fight pandemic globally [@besançon2021; @vuong2022]. However, your findings showed suboptimal adherence to data and code sharing and pre-registeration in COVID-19 related research, whilst majority of researchers had adhered to disclose funding and COI related to their COVID-19 related research. Stronger commitment to open science practices, particularly to preregistration, data and code sharing, is needed from all stakeholders.
 
 # References
