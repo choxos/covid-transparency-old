@@ -130,4 +130,8 @@ Despite we used representative data and validated methods to investigate transpa
 
 Transparency is crucial to ensure the credibility of science and enable its assessment. Transparent scientific practices, like the ones we investigated here, have helped to fight pandemic globally [@besançon2021; @vuong2022]. However, your findings showed suboptimal adherence to data and code sharing and pre-registeration in COVID-19 related research, whilst majority of researchers had adhered to disclose funding and COI related to their COVID-19 related research. Stronger commitment to open science practices, particularly to preregistration, data and code sharing, is needed from all stakeholders.
 
+# Acknowledgements
+
+The computational analyzes were performed on servers provided by UEF Bioinformatics Center, University of Eastern Finland, Finland. The study was supported by a personal grant to ER from the Finnish Dental Society Apollonia.
+
 # References
