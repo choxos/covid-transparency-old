@@ -13,7 +13,10 @@ pacman::p_load(tidyverse,
                here, 
                ggplot2,
                knitr,
-               here)
+               here,
+               epiR,
+               ggpubr,
+               tibble)
 ```
 
 
