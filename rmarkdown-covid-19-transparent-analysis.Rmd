@@ -23,7 +23,7 @@ pacman::p_load(tidyverse,
 
 
 # Loading the datasets
-First, set working directory to the folder that has all the datasets in it using setwd() function and then run the following code:
+
 ```{r}
 opendata <- read.csv(here("data", "covid_transparency_opendata.csv"))
 ```
