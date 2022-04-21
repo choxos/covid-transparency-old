@@ -1,6 +1,6 @@
 ---
 title: "Transparency of COVID-19-related research - Analysis"
-author: Ahmad Sofi-Mahmudi, Eero Raittio
+author: Ahmad Sofi-Mahmudi, Eero Raittio, Sergio E. Uribe
 date: "2022-02-11"
 output: html_document
 ---
@@ -12,14 +12,12 @@ pacman::p_load(tidyverse,
                lubridate, 
                here, 
                ggplot2,
-               knitr)
+               knitr,
+               here,
+               epiR,
+               ggpubr,
+               tibble)
 ```
-
-
-```{r, setup, include=FALSE}
-# knitr::opts_knit$set(root.dir = '~/Documents/GitHub/covid-transparency/data')
-```
-
 
 
 # Loading the datasets
@@ -32,10 +30,17 @@ opendata <- read.csv(here("data", "covid_transparency_opendata.csv"))
 # Results
 Number of all papers (open access and non open access), open-access papers and open-access percentage:
 ```{r}
-kable(data.frame(hits_all = 92752, 
-           hits_oa = nrow(opendata),
-           oa_percentage = round((nrow(opendata)/92752)*100, 2)))
+kable(data.frame(hits_all = 175550, 
+           hits_oa = 133470,
+           oa_percentage = round((133470/175550)*100, 1)))
 ```
+
+Undownloadable papers:
+```{r}
+c(number = 133470 - nrow(opendata), 
+  percentage = round((133470 - nrow(opendata))/133470*100, 1))
+```
+
 
 First, adding the real publication year and month to the datasets. The real publication year/month is the year/month the paper was first appear online stored in firstPublicationDate column.
 ```{r}
@@ -88,14 +93,14 @@ kable(data.frame(Mean = round(mean(opendata$citedByCount),1),
 Characteristics of the paper with the highest number of citations:
 ```{r}
 kable(opendata[which.max(opendata$citedByCount),] %>% 
-  select(pmid, pmcid, doi.x, title, authorString, journalTitle, pubYear))
+  select(citedByCount, pmid, pmcid, doi.x, title, authorString, journalTitle, pubYear))
 ```
 
 The number and percentage of papers with a conflict of interest (CoI) disclosure:
 ```{r}
 kable(data.frame(
   number = length(opendata$is_coi_pred[opendata$is_coi_pred == TRUE]),
-           percentage = round(length(opendata$is_coi_pred[opendata$is_coi_pred == TRUE])/nrow(opendata)*100, 2)
+           percentage = round(length(opendata$is_coi_pred[opendata$is_coi_pred == TRUE])/nrow(opendata)*100, 1)
            ))
 ```
 
@@ -107,10 +112,10 @@ kable(round(epi.prev(pos = length(opendata$is_coi_pred[opendata$is_coi_pred == T
          tested = nrow(opendata),
          se = 0.992,
          sp = 0.995)$ap, 
-      2))
+      1))
 ```
 
-Comparing CoI disclosure rate in two years:
+Comparing CoI disclosure rate in three years:
 ```{r}
 kable(round(prop.table(table(opendata$is_coi_pred, opendata$year_firstpub), 2)*100, 1))
 ```
@@ -123,7 +128,7 @@ chisq.test(opendata$is_coi_pred, opendata$year_firstpub)
 The number and percentage of papers with a funding statement:
 ```{r}
 kable(data.frame(number = length(opendata$is_fund_pred[opendata$is_fund_pred == TRUE]),
-           percentage = round(length(opendata$is_fund_pred[opendata$is_fund_pred == TRUE])/nrow(opendata)*100, 2)
+           percentage = round(length(opendata$is_fund_pred[opendata$is_fund_pred == TRUE])/nrow(opendata)*100, 1)
            ))
 ```
 
@@ -134,10 +139,10 @@ kable(round(epi.prev(pos = length(opendata$is_fund_pred[opendata$is_fund_pred ==
          tested = nrow(opendata),
          se = 0.997,
          sp = 0.981)$ap, 
-      2))
+      1))
 ```
 
-Comparing funding statement rate in two years:
+Comparing funding statement rate in three years:
 ```{r}
 kable(round(prop.table(table(opendata$is_fund_pred, opendata$year_firstpub), 2)*100, 1))
 ```
@@ -150,7 +155,7 @@ chisq.test(opendata$is_fund_pred, opendata$year_firstpub)
 The number and percentage of papers that were registered beforehand:
 ```{r}
 kable(data.frame(number = length(opendata$is_register_pred[opendata$is_register_pred == TRUE]),
-           percentage = round(length(opendata$is_register_pred[opendata$is_register_pred == TRUE])/nrow(opendata)*100, 2)
+           percentage = round(length(opendata$is_register_pred[opendata$is_register_pred == TRUE])/nrow(opendata)*100, 1)
            ))
 ```
 
@@ -161,10 +166,10 @@ kable(round(epi.prev(pos = length(opendata$is_register_pred[opendata$is_register
          tested = nrow(opendata),
          se = 0.955,
          sp = 0.997)$ap, 
-      2))
+      1))
 ```
 
-Comparing registration rate in two years:
+Comparing registration rate in three years:
 ```{r}
 kable(round(prop.table(table(opendata$is_register_pred, opendata$year_firstpub), 2)*100, 1))
 ```
@@ -178,7 +183,7 @@ chisq.test(opendata$is_register_pred, opendata$year_firstpub)
 The number and percentage of papers that shared data:
 ```{r}
 kable(data.frame(number = length(opendata$is_open_data[opendata$is_open_data == TRUE]),
-           percentage = round(length(opendata$is_open_data[opendata$is_open_data == TRUE])/nrow(opendata)*100, 2)
+           percentage = round(length(opendata$is_open_data[opendata$is_open_data == TRUE])/nrow(opendata)*100, 1)
            ))
 ```
 
@@ -189,10 +194,10 @@ kable(round(epi.prev(pos = length(opendata$is_open_data[opendata$is_open_data ==
          tested = nrow(opendata),
          se = 0.758,
          sp = 0.986)$ap, 
-      2))
+      1))
 ```
 
-Comparing data sharing rate in two years:
+Comparing data sharing rate in three years:
 ```{r}
 kable(round(prop.table(table(opendata$is_open_data, opendata$year_firstpub), 2)*100, 1))
 ```
@@ -205,7 +210,7 @@ chisq.test(opendata$is_open_data, opendata$year_firstpub)
 The number and percentage of papers that shared code:
 ```{r}
 kable(data.frame(number = length(opendata$is_open_code[opendata$is_open_code == TRUE]),
-           percentage = round(length(opendata$is_open_code[opendata$is_open_code == TRUE])/nrow(opendata)*100, 2)
+           percentage = round(length(opendata$is_open_code[opendata$is_open_code == TRUE])/nrow(opendata)*100, 1)
            ))
 ```
 
@@ -216,10 +221,10 @@ kable(round(epi.prev(pos = length(opendata$is_open_code[opendata$is_open_code ==
          tested = nrow(opendata),
          se = 0.587,
          sp = 0.997)$ap, 
-      2))
+      1))
 ```
 
-Comparing sharing code rate in two years:
+Comparing sharing code rate in three years:
 ```{r}
 kable(round(prop.table(table(opendata$is_open_code, opendata$year_firstpub), 2)*100, 1))
 ```
@@ -233,7 +238,7 @@ chisq.test(opendata$is_open_code, opendata$year_firstpub)
 
 First, importing jif file:
 ```{r}
-jif <- read.csv("jif_2020.csv")
+jif <- read.csv(here("data", "jif_2020.csv"))
 ```
 
 Merging it with opendata:
@@ -242,19 +247,27 @@ db_jif <- merge(opendata, jif, by.x = "journalIssn", by.y = "ISSN")
 db_jif$X2020.JIF <- as.numeric(db_jif$X2020.JIF)
 ```
 
-Total number of papers published in journals with no JIF:
+Total number of papers published in journals with a JIF:
 ```{r}
-nrow(opendata) - nrow(db_jif)
+nrow(db_jif)
 ```
 
 JIF based on COI disclosure:
 ```{r}
 kable(db_jif %>% 
   group_by(is_coi_pred) %>% 
-  summarise(Mean = round(mean(X2020.JIF, na.rm = T),3),
-            SD = round(sd(X2020.JIF, na.rm = T),4),
-            Median = median(X2020.JIF, na.rm = T),
-            IQR = IQR(X2020.JIF, na.rm = T)))
+  summarise(Median = round(median(X2020.JIF, na.rm = T), 1),
+            IQR = round(IQR(X2020.JIF, na.rm = T), 2)))
+
+
+```
+
+Citation based on COI disclosure:
+```{r}
+kable(db_jif %>% 
+  group_by(is_coi_pred) %>% 
+  summarise(Median = round(median(citedByCount, na.rm = T), 1),
+            IQR = round(IQR(citedByCount, na.rm = T), 2)))
 ```
 
 Test for normality:
@@ -263,21 +276,34 @@ set.seed(10)
 
 with(db_jif, shapiro.test(sample(X2020.JIF[is_coi_pred == TRUE], 5000)))
 with(db_jif, shapiro.test(X2020.JIF[is_coi_pred == FALSE]))
+
+with(db_jif, shapiro.test(sample(citedByCount[is_coi_pred == TRUE], 5000)))
+with(db_jif, shapiro.test(citedByCount[is_coi_pred == FALSE]))
 ```
 
 Data is not normal, hence we will use unpaired two-samples Wilcoxon test.
 ```{r}
 wilcox.test(X2020.JIF~is_coi_pred, data = db_jif, exact = FALSE)
+
+wilcox.test(citedByCount~is_coi_pred, data = db_jif, exact = FALSE)
 ```
 
 JIF based on funding disclosure:
 ```{r}
 kable(db_jif %>% 
   group_by(is_fund_pred) %>% 
-  summarise(Mean = round(mean(X2020.JIF, na.rm = T), 3),
-            SD = round(sd(X2020.JIF, na.rm = T), 4),
-            Median = median(X2020.JIF, na.rm = T),
-            IQR = IQR(X2020.JIF, na.rm = T)))
+  summarise(Median = round(median(X2020.JIF, na.rm = T), 1),
+            IQR = round(IQR(X2020.JIF, na.rm = T), 2)))
+
+
+```
+
+Citation based on funding disclosure:
+```{r}
+kable(db_jif %>% 
+  group_by(is_fund_pred) %>% 
+  summarise(Median = round(median(citedByCount, na.rm = T), 1),
+            IQR = round(IQR(citedByCount, na.rm = T), 2)))
 ```
 
 Test for normality:
@@ -285,22 +311,36 @@ Test for normality:
 set.seed(10)
 
 with(db_jif, shapiro.test(sample(X2020.JIF[is_fund_pred == TRUE], 5000)))
-with(db_jif, shapiro.test(X2020.JIF[is_fund_pred == FALSE]))
+with(db_jif, shapiro.test(sample(X2020.JIF[is_fund_pred == FALSE], 5000)))
+
+with(db_jif, shapiro.test(sample(citedByCount[is_fund_pred == TRUE], 5000)))
+with(db_jif, shapiro.test(sample(citedByCount[is_fund_pred == FALSE], 5000)))
 ```
 
 Data is not normal, hence we will use unpaired two-samples Wilcoxon test.
 ```{r}
 wilcox.test(X2020.JIF~is_fund_pred, data = db_jif, exact = FALSE)
+
+wilcox.test(citedByCount~is_fund_pred, data = db_jif, exact = FALSE)
 ```
+
 
 JIF based on registration:
 ```{r}
 kable(db_jif %>% 
   group_by(is_register_pred) %>% 
-  summarise(Mean = round(mean(X2020.JIF, na.rm = T), 3),
-            SD = round(sd(X2020.JIF, na.rm = T), 4),
-            Median = median(X2020.JIF, na.rm = T),
-            IQR = IQR(X2020.JIF, na.rm = T)))
+  summarise(Median = round(median(X2020.JIF, na.rm = T), 1),
+            IQR = round(IQR(X2020.JIF, na.rm = T), 2)))
+
+
+```
+
+Citation based on funding disclosure:
+```{r}
+kable(db_jif %>% 
+  group_by(is_register_pred) %>% 
+  summarise(Median = round(median(citedByCount, na.rm = T), 1),
+            IQR = round(IQR(citedByCount, na.rm = T), 2)))
 ```
 
 Test for normality:
@@ -309,44 +349,70 @@ set.seed(10)
 
 with(db_jif, shapiro.test(X2020.JIF[is_register_pred == TRUE]))
 with(db_jif, shapiro.test(sample(X2020.JIF[is_register_pred == FALSE], 5000)))
+
+with(db_jif, shapiro.test(citedByCount[is_register_pred == TRUE]))
+with(db_jif, shapiro.test(sample(citedByCount[is_register_pred == FALSE], 5000)))
 ```
 
 Data is not normal, hence we will use unpaired two-samples Wilcoxon test.
 ```{r}
 wilcox.test(X2020.JIF~is_register_pred, data = db_jif, exact = FALSE)
+
+wilcox.test(citedByCount~is_register_pred, data = db_jif, exact = FALSE)
 ```
 
 JIF based on data sharing:
 ```{r}
 kable(db_jif %>% 
   group_by(is_open_data) %>% 
-  summarise(Mean = round(mean(X2020.JIF, na.rm = T), 3),
-            SD = round(sd(X2020.JIF, na.rm = T), 4),
-            Median = median(X2020.JIF, na.rm = T),
-            IQR = IQR(X2020.JIF, na.rm = T)))
+  summarise(Median = round(median(X2020.JIF, na.rm = T), 1),
+            IQR = round(IQR(X2020.JIF, na.rm = T), 2)))
+
+
+```
+
+Citation based on funding disclosure:
+```{r}
+kable(db_jif %>% 
+  group_by(is_open_data) %>% 
+  summarise(Median = round(median(citedByCount, na.rm = T), 1),
+            IQR = round(IQR(citedByCount, na.rm = T), 2)))
 ```
 
 Test for normality:
 ```{r}
 set.seed(10)
 
-with(db_jif, shapiro.test(X2020.JIF[is_open_data == TRUE]))
+with(db_jif, shapiro.test(sample(X2020.JIF[is_open_data == TRUE], 5000)))
 with(db_jif, shapiro.test(sample(X2020.JIF[is_open_data == FALSE], 5000)))
+
+with(db_jif, shapiro.test(sample(citedByCount[is_open_data == TRUE], 5000)))
+with(db_jif, shapiro.test(sample(citedByCount[is_open_data == FALSE], 5000)))
 ```
 
 Data is not normal, hence we will use unpaired two-samples Wilcoxon test.
 ```{r}
 wilcox.test(X2020.JIF~is_open_data, data = db_jif, exact = FALSE)
+
+wilcox.test(citedByCount~is_open_data, data = db_jif, exact = FALSE)
 ```
 
 JIF based on code sharing:
 ```{r}
 kable(db_jif %>% 
   group_by(is_open_code) %>% 
-  summarise(Mean = round(mean(X2020.JIF, na.rm = T), 3),
-            SD = round(sd(X2020.JIF, na.rm = T), 4),
-            Median = median(X2020.JIF, na.rm = T),
-            IQR = IQR(X2020.JIF, na.rm = T)))
+  summarise(Median = round(median(X2020.JIF, na.rm = T), 1),
+            IQR = round(IQR(X2020.JIF, na.rm = T), 2)))
+
+
+```
+
+Citation based on funding disclosure:
+```{r}
+kable(db_jif %>% 
+  group_by(is_open_code) %>% 
+  summarise(Median = round(median(citedByCount, na.rm = T), 1),
+            IQR = round(IQR(citedByCount, na.rm = T), 2)))
 ```
 
 Test for normality:
@@ -355,135 +421,156 @@ set.seed(10)
 
 with(db_jif, shapiro.test(X2020.JIF[is_open_code == TRUE]))
 with(db_jif, shapiro.test(sample(X2020.JIF[is_open_code == FALSE], 5000)))
+
+with(db_jif, shapiro.test(citedByCount[is_open_code == TRUE]))
+with(db_jif, shapiro.test(sample(citedByCount[is_open_code == FALSE], 5000)))
 ```
 
 Data is not normal, hence we will use unpaired two-samples Wilcoxon test.
 ```{r}
 wilcox.test(X2020.JIF~is_open_code, data = db_jif, exact = FALSE)
+
+wilcox.test(citedByCount~is_open_code, data = db_jif, exact = FALSE)
+```
+
+## Sum of five indicators
+```{r}
+opendata <- opendata %>% mutate(sumOfIndicators = rowSums(opendata %>% select(is_coi_pred, is_register_pred, is_fund_pred, is_open_data, is_open_code)))
+```
+
+Number of papers with each number of TRUE indicators:
+```{r}
+c(five_ind = nrow(filter(opendata, sumOfIndicators == 5)),
+  four_ind = nrow(filter(opendata, sumOfIndicators == 4)),
+  three_ind = nrow(filter(opendata, sumOfIndicators == 3)),
+  two_ind = nrow(filter(opendata, sumOfIndicators == 2)),
+  one_ind = nrow(filter(opendata, sumOfIndicators == 1)),
+  zero_ind = nrow(filter(opendata, sumOfIndicators == 0)))
+```
+
+Percentage of papers with each number of TRUE indicators:
+```{r}
+
+c(five_ind = round(nrow(filter(opendata, sumOfIndicators == 5))/nrow(opendata)*100, 1),
+  four_ind = round(nrow(filter(opendata, sumOfIndicators == 4))/nrow(opendata)*100, 1),
+  three_ind = round(nrow(filter(opendata, sumOfIndicators == 3))/nrow(opendata)*100, 1),
+  two_ind = round(nrow(filter(opendata, sumOfIndicators == 2))/nrow(opendata)*100, 1),
+  one_ind = round(nrow(filter(opendata, sumOfIndicators == 1))/nrow(opendata)*100, 1),
+  zero_ind = round(nrow(filter(opendata, sumOfIndicators == 0))/nrow(opendata)*100, 1))
+```
+
+To know which of the indicators were TRUE in papers with two TRUE indicators:
+```{r}
+
+nrow_ <- nrow(filter(opendata, sumOfIndicators == 2))
+
+c(coi = round(nrow(filter(opendata, sumOfIndicators == 2 & is_coi_pred))/nrow_*100, 1),
+  fund = round(nrow(filter(opendata, sumOfIndicators == 2 & is_fund_pred))/nrow_*100, 1),
+  reg = round(nrow(filter(opendata, sumOfIndicators == 2 & is_register_pred))/nrow_*100, 1),
+  data = round(nrow(filter(opendata, sumOfIndicators == 2 & is_open_data))/nrow_*100, 1),
+  code = round(nrow(filter(opendata, sumOfIndicators == 2 & is_open_code))/nrow_*100, 1))
+```
+
+## Monthly trend
+Figure 1:
+```{r}
+library(tibble)
+
+proportions <- opendata %>%
+        summarise("COI Disclosure" = sum(is_coi_pred == TRUE),
+                  "Funding disclosure" = sum(is_fund_pred == TRUE),
+                  "Protocol registration" = sum(is_register_pred == TRUE),
+                  "Data sharing" = sum(is_open_data == TRUE),
+                  "Code sharing" = sum(is_open_code == TRUE)) %>%
+        t() %>%
+        as.data.frame() %>%
+        rownames_to_column(var = "indicator") %>%
+        mutate(percentage = round(V1/nrow(opendata)*100, 1))
+
+p1 <- proportions %>% ggplot() +
+        aes(x = reorder(indicator, V1),
+            y = V1,
+            fill = indicator,
+            col = indicator) +
+        geom_col(alpha = 0.75) +
+        geom_text(aes(label = percentage), hjust = -0.1, size = 3) +
+        scale_y_continuous(
+                name = "\nNumber of articles (in ten thousands)",
+                breaks = seq(0, 10E4, 5E4),
+                labels = seq(0, 10, 5),
+                expand = expansion(mult = c(0, 0.2))
+                ) +
+        coord_flip() +
+        xlab(NULL) +
+        theme(
+                legend.position = "none", 
+                panel.grid.major.y = element_blank()
+        )
+```
+
+For the line grapht, first, we add the real publication year and month to the datasets. The real publication year/month is the year/month the paper was first appear online stored in firstPublicationDate column.
+```{r}
+opendata$YearMonth <- format(as.Date(opendata$firstPublicationDate), "%Y-%m")
 ```
 
 
-## Monthly trend
-Now, drawing monthly trend for each year:
 ```{r}
-summarybyMonth <- opendata %>%
-  group_by(month_firstpub, year_firstpub) %>%
-  summarise(counts = n(),
-            coi_true = sum(is_coi_pred == TRUE),
-            fund_true = sum(is_fund_pred == TRUE),
-            reg_true = sum(is_register_pred == TRUE),
-            data_true = sum(is_open_data == TRUE),
-            code_true = sum(is_open_code == TRUE))
-
-coi_summarybyMonth <- opendata %>%
-  group_by(month_firstpub, year_firstpub, is_coi_pred) %>%
-  summarise(counts = n())
-
-coi_plot <- coi_summarybyMonth %>%
-  ggplot(aes(x = month_firstpub, y = counts, fill = is_coi_pred)) + 
-  geom_col(position = position_dodge()) +
-  facet_grid(. ~ year_firstpub) +
-  geom_bar(stat = "identity") +
-  scale_x_discrete(name="Month", limits = 1:12, labels = 1:12) +
-  theme_minimal() +
-  theme(legend.title = element_blank(), 
-        plot.title = element_text(hjust = 0.5)) +
-  labs(title = "Conflict of Interest disclosure",
-       y = "Number of articles") +
-        scale_fill_discrete(labels = c("Without", "With"),
-                            guide = guide_legend(reverse=TRUE))
-
-fund_summarybyMonth <- opendata %>%
-  group_by(month_firstpub, year_firstpub, is_fund_pred) %>%
-  summarise(counts = n())
-
-fund_plot <- fund_summarybyMonth %>%
-  ggplot(aes(x = month_firstpub, y = counts, fill = is_fund_pred)) + 
-  geom_col(position = position_dodge()) +
-  facet_grid(. ~ year_firstpub) +
-  geom_bar(stat = "identity") +
-  scale_x_discrete(name="Month", limits = 1:12, labels = 1:12) +
-  theme_minimal() +
-  theme(legend.title = element_blank(), 
-        plot.title = element_text(hjust = 0.5)) +
-  labs(title = "Funding statement",
-       y = "Number of articles") +
-        scale_fill_discrete(labels = c("Without", "With"),
-                            guide = guide_legend(reverse=TRUE))
-
-reg_summarybyMonth <- opendata %>%
-  group_by(month_firstpub, year_firstpub, is_register_pred) %>%
-  summarise(counts = n())
-
-reg_plot <- reg_summarybyMonth %>%
-  ggplot(aes(x = month_firstpub, y = counts, fill = is_register_pred)) + 
-  geom_col(position = position_dodge()) +
-  facet_grid(. ~ year_firstpub) +
-  geom_bar(stat = "identity") +
-  scale_x_discrete(name="Month", limits = 1:12, labels = 1:12) +
-  theme_minimal() +
-  theme(legend.title = element_blank(), 
-        plot.title = element_text(hjust = 0.5)) +
-  labs(title = "Registration statement",
-       y = "Number of articles") +
-        scale_fill_discrete(labels = c("Without", "With"),
-                            guide = guide_legend(reverse=TRUE))
-
-data_summarybyMonth <- opendata %>%
-  group_by(month_firstpub, year_firstpub, is_open_data) %>%
-  summarise(counts = n())
-
-data_plot <- data_summarybyMonth %>%
-  ggplot(aes(x = month_firstpub, y = counts, fill = is_open_data)) + 
-  geom_col(position = position_dodge()) +
-  facet_grid(. ~ year_firstpub) +
-  geom_bar(stat = "identity") +
-  scale_x_discrete(name="Month", limits = 1:12, labels = 1:12) +
-  theme_minimal() +
-  theme(legend.title = element_blank(), 
-        plot.title = element_text(hjust = 0.5)) +
-  labs(title = "Data sharing",
-       y = "Number of articles") +
-        scale_fill_discrete(labels = c("Without", "With"),
-                            guide = guide_legend(reverse=TRUE))
-
-code_summarybyMonth <- opendata %>%
-  group_by(month_firstpub, year_firstpub, is_open_code) %>%
-  summarise(counts = n())
-
-code_plot <- code_summarybyMonth %>%
-  ggplot(aes(x = month_firstpub, y = counts, fill = is_open_code)) + 
-  geom_col(position = position_dodge()) +
-  facet_grid(. ~ year_firstpub) +
-  geom_bar(stat = "identity") +
-  scale_x_discrete(name="Month", limits = 1:12, labels = 1:12) +
-  theme_minimal() +
-  theme(legend.title = element_blank(), 
-        plot.title = element_text(hjust = 0.5)) +
-  labs(title = "Code sharing",
-       y = "Number of articles") +
-        scale_fill_discrete(labels = c("Without", "With"),
-                            guide = guide_legend(reverse=TRUE))
-
 library(ggpubr)
 
-figure <- ggarrange(coi_plot + rremove("xlab") + theme(axis.text.x=element_blank()), 
-                    fund_plot + rremove("xlab") + theme(axis.text.x=element_blank(), strip.text.x = element_blank()),
-                    reg_plot + theme(strip.text.x = element_blank()),
-                    ncol = 1, nrow = 3, vjust = 1, 
-                    align = "hv", common.legend = T, legend = "right")
+indicator_by_year <- 
+        opendata %>% 
+        select(YearMonth,
+               is_coi_pred,
+               is_fund_pred,
+               is_register_pred,
+               is_open_data,
+               is_open_code) %>%
+        gather("indicator", "value", -YearMonth) %>%
+        count(YearMonth, indicator, value) %>%
+        mutate(indicator = recode(indicator,
+                                  is_coi_pred = "COI Disclosure",
+                                  is_fund_pred = "Funding disclosure",
+                                  is_register_pred = "Protocol registration",
+                                  is_open_data = "Data sharing",
+                                  is_open_code = "Code sharing")) %>%
+        complete(indicator, value, YearMonth, fill = list(n = 0)) %>%
+        group_by(YearMonth, indicator) %>% 
+        mutate(p = n / sum(n)) %>%
+        filter(value) %>%
+        ungroup()
 
-figure <- ggarrange(coi_plot + rremove("xlab") + theme(axis.text.x=element_blank()), 
-                    fund_plot + rremove("xlab") + theme(axis.text.x=element_blank(), strip.text.x = element_blank()),
-                    reg_plot + rremove("xlab") + theme(axis.text.x=element_blank(), strip.text.x = element_blank()),
-                    data_plot + rremove("xlab") + theme(axis.text.x=element_blank(), strip.text.x = element_blank()),
-                    code_plot + theme(strip.text.x = element_blank()),
-                    ncol = 1, nrow = 5, vjust = 1, 
-                    align = "hv", common.legend = T, legend = "right")
+p2 <-
+        indicator_by_year %>% 
+        ggplot() +
+        aes(x = YearMonth, 
+            y = p,
+            group = indicator,
+            color = indicator) +
+        geom_line(size = 0.75) +
+        scale_y_continuous(limits = c(0, 1), 
+                           labels = scales::percent) +
+        scale_color_discrete(name = NULL) +
+        scale_fill_discrete(breaks = c("COI Disclosure",
+                                       "Funding disclosure",
+                                       "Protocol registration",
+                                       "Data sharing",
+                                       "Code sharing")) +
+        labs(y = "Proportion of articles (%)\n", 
+             x = "\nMonth") +
+        theme(panel.grid.minor = element_blank(),
+              legend.position = c(0.2, 0.9),
+              axis.text.x = element_text(angle = 45, vjust = 0.9, hjust=1),
+              legend.key.size = unit(0.4, 'cm')
+              )
 
-# tiff("Figure.tiff", width = 6, height = 11, units = "in", res = 300)
+figure <- ggarrange(p1, p2,
+                    ncol = 2, nrow = 1, 
+                    align = "hv", common.legend = F)
+
+# tiff("Figure.tiff", width = 14, height = 7, units = "in", res = 300)
 figure
 #dev.off()
+
 ```
 
 
