@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.46">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Ahmad Sofi-Mahmudi ">
+  <meta name="author" content="Eero Raittio*">
+  <meta name="author" content="Sergio E. Uribe ">
+  <title>Transparency of COVID-19-related research in medical journals</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+
+  <script src="manuscript_covid_transparency_files/libs/clipboard/clipboard.min.js"></script>
+  <script src="manuscript_covid_transparency_files/libs/quarto-html/quarto.js"></script>
+  <script src="manuscript_covid_transparency_files/libs/quarto-html/popper.min.js"></script>
+  <script src="manuscript_covid_transparency_files/libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="manuscript_covid_transparency_files/libs/quarto-html/anchor.min.js"></script>
+  <link href="manuscript_covid_transparency_files/libs/quarto-html/tippy.css" rel="stylesheet">
+  <link href="manuscript_covid_transparency_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <script src="manuscript_covid_transparency_files/libs/bootstrap/bootstrap.min.js"></script>
+  <link href="manuscript_covid_transparency_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="manuscript_covid_transparency_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body class="fullcontent">
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+<header id="title-block-header">
+<h1 class="title display-7">Transparency of COVID-19-related research in medical journals</h1>
+<p class="author">Ahmad Sofi-Mahmudi<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p class="author">Eero Raittio*<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p class="author">Sergio E. Uribe<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+</header>
+<p><strong>Corresponding author:</strong> Eero Raittio; <strong>Address</strong>: University of Eastern Finland, Institute of Dentistry, P.O. Box 1627, FI-70211 Kuopio, Finland; <strong>Telephone</strong>: +358 294 45 1111; <strong>Email</strong>: <a href="mailto:eero.raittio@uef.fi">eero.raittio@uef.fi</a>.</p>
+<p><strong>Authors’ contributions:</strong> All authors conceived and designed, and wrote and revised the protocol.</p>
+<section id="what-is-new" class="level1">
+<h1>What is new</h1>
+<ul>
+<li><p>key findings</p></li>
+<li><p>what this adds to what is known</p></li>
+<li><p>what is the implication/what should change now</p></li>
+</ul>
+<p>Before completing your submission, please take some time to check that your submission includes “What is new” text, including up to 5 points that address the following areas: key findings, what this adds to what is known, and what is the implication/what should change now.</p>
+</section>
+<section id="abstract" class="level1">
+<h1>Abstract</h1>
+<p><strong>Objective:</strong> We aimed to assess the adherence to five transparent practices (data availability, code availability, statements of protocol registration and conflicts of interest and funding disclosures) from open access Coronavirus disease 2019 (COVID-19) related articles.</p>
+<p><strong>Methods:</strong> We searched and exported all open-access COVID-19-related articles from PubMed-indexed journals available in the Europe PubMed Central database published between January 2020 and December 2021. We detected transparent practices with a validated and automated tool. Basic journal- and article-related information were retrieved from the database. We used R for the searches (europepmc package), data handling, analysis (rtransparent package) and reporting (ggplot2 package).</p>
+<p><strong>Results:</strong> The total number of COVID-19-related articles was 175,550, of which we were able to retrieve full texts of 132,598 (76%) articles from the database Of those, 87.0%, (95% CI: 86.8%–87.2%) provided conflicts of interest disclosure and 68.9% (95% CI: 68.7%–69.2%) funding disclosure and 3.6%, (95% CI: 3.5%–3.7%) had registered protocol. 8.7% (95% CI: 8.6%–8.9%) of studies shared raw data and 3.1% (95% CI: 3.0%–3.2%) of studies shared code. Transparent practices were more common in articles published in 2022 than in 2021 and 2020. Apart from COI disclosure, articles that adhered to transparency practices were published in journals with slightly higher median Journal Impact Factor but received equal citations.</p>
+<p><strong>Conclusion:</strong> While the majority of the articles were freely available and had a COI disclosure, the adherence to other transparent practices was far from the acceptable level. The adherence was even surprisingly low, particularly in terms of data sharing, taking into account global initiatives to improve open science in COVID-19 related research. A much stronger commitment to open science practices, particularly to protocol registration, data and code sharing, is needed from all stakeholders.</p>
+<p><strong><em>Keywords:</em></strong> COVID-19; Data; FAIR data principles; Open Science.</p>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>During the recent COVID-19 pandemic, part of the public in developed countries justified their lack of adherence to public health measures due to the lack of transparency of the scientific studies used as an argument by national authorities <span class="citation" data-cites="Skipper2020-rs">(<a href="#ref-Skipper2020-rs" role="doc-biblioref">1</a>)</span>. Thus, supranational bodies such as the OECD indicate that transparent communication to citizens is vital to support public health measures and to counter misinformation <span class="citation" data-cites="Bellantoni_undated-tf">(<a href="#ref-Bellantoni_undated-tf" role="doc-biblioref">2</a>)</span>. On the other hand, the COVID-19 pandemic launched an incredibly fast and voluminous avalanche of scientific publications across the different fields of science. This research led to the development of vaccines as well as the evaluation of community interventions. On the one hand, it is possible that transparent scientific practices, like data and code sharing, have helped to fight pandemic globally <span class="citation" data-cites="besançon2021 vuong2022">(<a href="#ref-besançon2021" role="doc-biblioref">3</a>,<a href="#ref-vuong2022" role="doc-biblioref">4</a>)</span>, while on the other hand, the lack of transparency of some key developments has led the public to mistrust the results of research and public health measures <span class="citation" data-cites="Skipper2020-rs">(<a href="#ref-Skipper2020-rs" role="doc-biblioref">1</a>)</span>. This shows that there is a lack of awareness about the level of transparency practices in COVID-19-related medical literature. As an example, it is unknown whether open science initiatives related to COVID-19 pandemic <span class="citation" data-cites="besançon2021 vuong2022">(<a href="#ref-besançon2021" role="doc-biblioref">3</a>,<a href="#ref-vuong2022" role="doc-biblioref">4</a>)</span> to advance data sharing, has led to higher number of articles sharing data in COVID-19 research compared to what has been seen in studies in general in biomedical literature <span class="citation" data-cites="serghiou2021">(<a href="#ref-serghiou2021" role="doc-biblioref">5</a>)</span>.</p>
+<p>Our aim was to assess the adherence to transparent scientific practices (data sharing, code sharing, conflict of interest, COI, disclosures, funding disclosures, and protocol registration) from open access full-text COVID-19-related articles published in PubMed indexed journals from the Europe PubMed Central (EPMC) database. We mapped adherence to transparent practices across time, journal impact factor (JIF) and citations articles have received</p>
+</section>
+<section id="methods" class="level1">
+<h1>Methods</h1>
+<p>The protocol of this study was published beforehand on the Open Science Framework (OSF) website (<a href="https://osf.io/5kx2n">osf.io/5kx2n</a>). All code and data related to the study were shared via its OSF repository (<a href="https://osf.io/x3kb6/">osf.io/x3kb6</a>) at the time of submission of the manuscript.</p>
+<section id="data-sources-and-study-selection" class="level2">
+<h2 class="anchored" data-anchor-id="data-sources-and-study-selection">Data sources and study selection</h2>
+<p>We searched for open access COVID-19-related PubMed-indexed articles available in the EPMC database. We restricted our search to papers in English and considered papers published from 2020-01-01 to 2021-12-31 with variants of COVID-19 keyword in their title, keywords, or results. This enabled us to bypass screening for COVID-19-related papers and decrease the human labor for our research. We confirmed our approach by choosing a random sample of 500 papers and of those, all but 10 were relevant to COVID-19.</p>
+<p>The search query was as follows:</p>
+<p>(COVID-19 query for title, keywords, and results) AND (SRC:“MED”) AND (LANG:“eng” OR LANG:“en” OR LANG:“us”) AND (FIRST_PDATE:[2020-01-01 TO 2021-12-31]) AND (OPEN_ACCESS:y) AND (PUB_TYPE:“Journal Article” OR PUB_TYPE:“research-article” OR PUB_TYPE:“rapid-communication” OR PUB_TYPE:“product-review”)’</p>
+<p>The full COVID-19 query is available in Appendix 1.</p>
+<p>We downloaded all identified available records in XML full-text format (for full-text evaluation) using the metareadr package <span class="citation" data-cites="metareadr">(<a href="#ref-metareadr" role="doc-biblioref">6</a>)</span> from the database.</p>
+</section>
+<section id="data-extraction-and-synthesis" class="level2">
+<h2 class="anchored" data-anchor-id="data-extraction-and-synthesis">Data extraction and synthesis</h2>
+<p>We assessed articles’ adherence to five transparent practices:</p>
+<ul>
+<li><p>data sharing,</p></li>
+<li><p>code sharing,</p></li>
+<li><p>COI disclosures,</p></li>
+<li><p>funding disclosures,</p></li>
+<li><p>protocol registration.</p></li>
+</ul>
+<p>To do so, we used a validated and automated tool developed by Serghiou et al. <span class="citation" data-cites="serghiou2021">(<a href="#ref-serghiou2021" role="doc-biblioref">5</a>)</span> suitable to identify these five transparent practices from articles in XML format from the EPMC database. Regarding data sharing, code sharing and protocol registration the tool identifies whether the article had actually adhered to practice (for instance “data available on request” are not counted as sharing data), whereas COI and funding disclosure merely detect whether articles include the disclosure or not (regardless of its specific content) <span class="citation" data-cites="serghiou2021">(<a href="#ref-serghiou2021" role="doc-biblioref">5</a>)</span>.</p>
+<p>Basic journal- and article-related information (publisher, publication year, citations to article and journal name) were retrieved from the EPMC database. We downloaded additional information about journal impact factors from the Journal Citation Reports (ٰ<a href="https://jcr.clarivate.com/">jcr.clarivate.com</a>).</p>
+<p>We also calculated the proportion of articles available as open-access full-texts via the Europe PMC from the total number of COVID-19-related articles in the database.</p>
+</section>
+<section id="data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="data-analysis">Data analysis</h2>
+<p>We used R v4.1.2 <span class="citation" data-cites="base">(<a href="#ref-base" role="doc-biblioref">7</a>)</span> for searches, data handling, analysis and reporting. The searches and data export from the Europe PMC were conducted with the europepmc package <span class="citation" data-cites="europepmc">(<a href="#ref-europepmc" role="doc-biblioref">8</a>)</span>. Indicators of transparency practices from the available full-texts were extracted with the rtransparent package <span class="citation" data-cites="rtransparent">(<a href="#ref-rtransparent" role="doc-biblioref">9</a>)</span>. Trends over time in transparency practices were reported using descriptive tabulations and graphical illustrations using the ggplot2 package <span class="citation" data-cites="ggplot2">(<a href="#ref-ggplot2" role="doc-biblioref">10</a>)</span>. We used the sensitivity and specificity of the rtransparent package <span class="citation" data-cites="serghiou2021">(<a href="#ref-serghiou2021" role="doc-biblioref">5</a>)</span> to generate 95% confidence intervals (CIs) for our prevalence estimates of the transparency practices with the epiR package <span class="citation" data-cites="epiR">(<a href="#ref-epiR" role="doc-biblioref">11</a>)</span>.</p>
+<p>Additionally, we calculated how many transparency practices articles had adhered to (from 0 to 5 practices). We used Chi-square for comparing indicators between years and the Wilcoxon rank sum test to test whether there was a relationship between transparency indicators and JIF or received citations. Fisher exact tests with Monte-Carlo simulated p-values for differences in transparency practices by journals and publishers were performed. The thorough information, data and code for the analysis are available as supplementary material on the OSF repository (<a href="https://osf.io/x3kb6/">osf.io/x3kb6</a>).</p>
+</section>
+</section>
+<section id="results" class="level1">
+<h1>Results</h1>
+<p>The total number of COVID-19-related articles (open access and non-open access) was 175,544, of which 133,467 (76.0%) were accessible as open-access in the EPMC. However, 869 (0.7%) were not downloadable because of technical issues and thus were excluded from our analyses. Of those 132,598 remaining articles, 47,548 were published in 2020, 75,842 in 2021, and 9,208 in the first two months of 2022.</p>
+<p>These articles were published in 6,020 journals of which the top five were International Journal of Environmental Research and Public Health (n=3,710), PLoS ONE (n=3,059), Scientific Reports (n=1,716), Frontiers in Public Health (n=1,351), and Frontiers in Psychology (n=1,341). The mean and the median of the number of citations to these articles were 12.0 (standard deviation, SD = 92.28) and 2 (interquartile range, IQR = 7). The highest cited article with 15,549 citations was an article published in the Lancet in 2020 <span class="citation" data-cites="huang2020">(<a href="#ref-huang2020" role="doc-biblioref">12</a>)</span>.</p>
+<p>About nine-tenth of the articles (n=115,387) had a statement to disclose COI (87.0%, 95% CI: 86.8%–87.2%). Articles published in 2022 had a higher rate of COI disclosure (91.4% (2022), 89.1% (2021), 82.9% (2020), P&lt;0.001). More than two-thirds of the references had a funding statement (n=91,413) (68.9%, 95% CI: 68.7%–69.2%). Articles in 2022 had a funding statement more frequently than two other years (79.0% (2022), 73.1% (2021), 60.4% (2020), P&lt;0.001). Less than 1 in 25 of the articles (n=4708) were registered beforehand (3.6%, 95% CI: 3.5%–3.7%) and the rate was higher in 2022 (5.4% (2022), 4.2% (2021), 2.2% (2020), P&lt;0.001).</p>
+<p>Regarding data and code availability, less than 1 in 11 articles had shared their data (n=11551) (8.7%, 95% CI: 8.6%–8.9%). Articles in 2022 had shared data more frequently (11.9% (2022), 9.6% (2021), 6.7% (2020), P&lt;0.001). Less than 1 in 30 of the articles (n=4055) had shared their code (3.1%, 95% CI: 3.0%–3.2%) and the rate was higher in 2022 (4.0% (2022), 3.5% (2021), 2.2 (2020), P&lt;0.001).</p>
+<p>There was a consistently increasing monthly trend in the proportion of articles with COI disclosure, funding disclosure and protocol registration, and the proportions were the highest in February 2022 (Figure 1B). Increases in data and code sharing were weaker than in other transparency practices over time.</p>
+<p>One-eleventh of the articles (9.0%, n=11,889) did not adhere to any of the five transparency practices, 24.0% (n=31,836) adhered to one, 56.0% (n=74,075) adhered to two, and 9.1% (n=12,109) adhered to three. Few (2.0%, n=2,644) articles showed adherence to four transparency practices, and less than 0.1% of the articles (n=45) had used all five practices.</p>
+<p>There were journal and publisher-related statistically significant differences in all five practices (p&lt;0.001 for all), except for code sharing based on JIF (0.14) (Table 1 and 2, Supplementary material).</p>
+<p>Apart from COI disclosure, articles that adhered to transparency practices were published in journals with slightly higher median JIF but received equal citations (Table 3).</p>
+</section>
+<section id="discussion" class="level1">
+<h1>Discussion</h1>
+<p>Adherence to transparent practices increased over time in COVID-19 related medical literature during 2020-2021. Adherence to reporting COI disclosure was high throughout study period, in addition most of articles had funding disclosure. Data sharing, code sharing and protocol registration were rare, but improved little over study period. COI disclosures seemed to be more common in articles published in lower impact journals, otherwise differences in transparent practices according to received citations and JIF were small.</p>
+<p>Adherence to transparent practices was at similar level in COVID-19 related literature than in other biomedical literature analyzed with the same methods (see Fig 3 in <span class="citation" data-cites="serghiou2021">(<a href="#ref-serghiou2021" role="doc-biblioref">5</a>)</span>). This is surprising particularly when considering worldwide, remarkable and noble initiatives related to enhancing open science to tackle the pandemic. As early as in January 2020, over 100 organizations, including journals, publishers, funders, universities and other institutions, signed a statement that aimed to ensure free access to research data, tools and other information related to COVID-19 <span class="citation" data-cites="vuong2022 coronavi">(<a href="#ref-vuong2022" role="doc-biblioref">4</a>,<a href="#ref-coronavi" role="doc-biblioref">13</a>)</span>. Later also other initiatives to support the goal emerged, for instance COVID-19 Open Research Dataset (CORD-19)<span class="citation" data-cites="cord-19">(<a href="#ref-cord-19" role="doc-biblioref">14</a>)</span>, a free resource of over 280,000 articles about the COVID-19 virus. However, it is possible that the algorithms used here did not efficiently detect all different ways of sharing data and material emerged after the pandemic, because the algorithms were validated before the pandemic <span class="citation" data-cites="serghiou2021">(<a href="#ref-serghiou2021" role="doc-biblioref">5</a>)</span>.</p>
+<p>In comparison to other studies on the transparency of COVID-19 related research is difficult due to different methodologies and scale of our research. However, it seems that data sharing was little less common than in our sample than what was the proportion detected in the beginning of the pandemic measured by the investigation of associated data in PubMed Central <span class="citation" data-cites="lucas-dominguez2021">(<a href="#ref-lucas-dominguez2021" role="doc-biblioref">15</a>)</span>. In addition, the proportion of studies which shared data in our study sample was lower than in COVID-19 related preprints shared via medRxiv and bioRxiv <span class="citation" data-cites="strcic2022">(<a href="#ref-strcic2022" role="doc-biblioref">16</a>)</span>. Lacking protocol registration, sharing code and COI have got attention during the pandemic <span class="citation" data-cites="Glasziou2020 besançon2021 luengo-oroz2020">(<a href="#ref-besançon2021" role="doc-biblioref">3</a>,<a href="#ref-Glasziou2020" role="doc-biblioref">17</a>,<a href="#ref-luengo-oroz2020" role="doc-biblioref">18</a>)</span>, however we are not aware of the investigation of transparency in these aspects in COVID-19 related research in this scale in medical research.</p>
+<p>Despite we used representative data and validated methods to investigate transparency in COVID-19-related research, our study has some weaknesses. The study sample was restricted to open access articles in the EPMC database which may not correspond to all COVID-19-related studies published in medical journals. At least in general, the differences in transparency practices between open access and non-open access articles from Europe PMC are rather similar <span class="citation" data-cites="wallach2018a">(<a href="#ref-wallach2018a" role="doc-biblioref">19</a>)</span>. However, as the majority of COVID-19-related papers were available via EPMC (76%), this does not diminish the strength of our interpretations considerably.</p>
+<p>Transparency is crucial to ensure the credibility of science and enable its assessment. Transparent scientific practices, like the ones we investigated here, have helped to fight pandemic globally <span class="citation" data-cites="besançon2021 vuong2022">(<a href="#ref-besançon2021" role="doc-biblioref">3</a>,<a href="#ref-vuong2022" role="doc-biblioref">4</a>)</span>. Whilst majority of COVID-19-related articles were open access and had adhered to disclose funding and COI, your findings showed suboptimal adherence to data and code sharing and protocol registration. Stronger commitment to open science practices, particularly to protocol registration, data and code sharing, is needed from all stakeholders.</p>
+</section>
+<section id="acknowledgements" class="level1">
+<h1>Acknowledgements</h1>
+<p>The computational analyzes were performed on servers provided by UEF Bioinformatics Center, University of Eastern Finland, Finland. The study was supported by a personal grant to ER from the Finnish Dental Society Apollonia.</p>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+</section>
+<section id="tables" class="level1">
+<h1>Tables</h1>
+<p>Table 1. Transparency practices in the six most common journals in the sample.</p>
+<table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Measurement</strong></th>
+<th><strong>BMC Oral Health, N = 2503</strong></th>
+<th><strong>Dental Press J Orthod, N = 530</strong></th>
+<th><strong>Head Face Med, N = 572</strong></th>
+<th><strong>J Appl Oral Sci, N = 1440</strong></th>
+<th><strong>J Indian Prosthodont Soc, N = 495</strong></th>
+<th><strong>Med Oral Patol Oral Cir Bucal, N = 1174</strong></th>
+<th><strong>Other, N = 3945</strong></th>
+<th><strong>p-value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>COI disclosure</td>
+<td>2489 (99%)</td>
+<td>502 (95%)</td>
+<td>537 (94%)</td>
+<td>303 (21%)</td>
+<td>301 (61%)</td>
+<td>869 (74%)</td>
+<td>3172 (80%)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr class="even">
+<td>Funding disclosure</td>
+<td>2232 (89%)</td>
+<td>87 (16%)</td>
+<td>280 (49%)</td>
+<td>656 (46%)</td>
+<td>301 (61%)</td>
+<td>497 (42%)</td>
+<td>2505 (63%)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr class="odd">
+<td>Protocol registration</td>
+<td>326 (13%)</td>
+<td>12 (2.3%)</td>
+<td>23 (4.0%)</td>
+<td>31 (2.2%)</td>
+<td>4 (0.8%)</td>
+<td>43 (3.7%)</td>
+<td>298 (7.6%)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr class="even">
+<td>Data sharing</td>
+<td>120 (4.8%)</td>
+<td>2 (0.4%)</td>
+<td>2 (0.3%)</td>
+<td>7 (0.5%)</td>
+<td>0 (0%)</td>
+<td>5 (0.4%)</td>
+<td>76 (1.9%)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr class="odd">
+<td>Code sharing</td>
+<td>6 (0.2%)</td>
+<td>0 (0%)</td>
+<td>0 (0%)</td>
+<td>0 (0%)</td>
+<td>0 (0%)</td>
+<td>0 (0%)</td>
+<td>0 (0%)</td>
+<td>0.61</td>
+</tr>
+</tbody>
+</table>
+<p>P-values from Fisher’s Exact Test for Count Data with simulated p-value (based on 2000 replicates). COI: Conflict of interest.</p>
+<p>Table 2. Transparency practices in the six most common publishers of journals in the sample.</p>
+<table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measurement</th>
+<th>BioMed Central, N = 3075</th>
+<th>Dental Press Editora, N = 530</th>
+<th>Faculdade de Odontologia de Bauru, N = 1440</th>
+<th>Medicina Oral, Patologia Oral y Cirugia Bucal, N 1174</th>
+<th>Springer Verlag, N = 935</th>
+<th>Wolters Kluwer Medknow Publications, N = 495</th>
+<th>Other, N = 2619</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>COI disclosure</td>
+<td>3026 (98%)</td>
+<td>502 (95%)</td>
+<td>303 (21%)</td>
+<td>869 (74%)</td>
+<td>904 (97%)</td>
+<td>301 (61%)</td>
+<td>1878 (72%)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr class="even">
+<td>Funding disclosure</td>
+<td>2512 (82%)</td>
+<td>87 (16%)</td>
+<td>656 (46%)</td>
+<td>497 (42%)</td>
+<td>596 (64%)</td>
+<td>301 (61%)</td>
+<td>1593 (61%)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr class="odd">
+<td>Protocol registration</td>
+<td>349 (11%)</td>
+<td>12 (2.3%)</td>
+<td>31 (2.2%)</td>
+<td>43 (3.7%)</td>
+<td>113 (12%)</td>
+<td>4 (0.8%)</td>
+<td>144 (5.5%)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr class="even">
+<td>Data sharing</td>
+<td>122 (4.0%)</td>
+<td>2 (0.4%)</td>
+<td>7 (0.5%)</td>
+<td>5 (0.4%)</td>
+<td>13 (1.4%)</td>
+<td>0 (0%)</td>
+<td>54 (2.1%)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr class="odd">
+<td>Code sharing</td>
+<td>6 (0.2%)</td>
+<td>0 (0%)</td>
+<td>0 (0%)</td>
+<td>0 (0%)</td>
+<td>1 (0.1%)</td>
+<td>0 (0%)</td>
+<td>1 (&lt;0.1%)</td>
+<td>0.68</td>
+</tr>
+</tbody>
+</table>
+<p>P-values from Fisher’s Exact Test for Count Data with simulated p-value (based on 2000 replicates). 391 articles were published in journal without available publisher information. COI: Conflict of interest.</p>
+<p>Table 3. Citations to article and journal impact factor by transparency practices.</p>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Citations to article</th>
+<th></th>
+<th></th>
+<th style="text-align: left;">Journal Impact Factor</th>
+<th style="text-align: left;"></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Measurement</td>
+<td>Median (IQR)</td>
+<td></td>
+<td>P-Value</td>
+<td style="text-align: left;">Median (IQR)</td>
+<td style="text-align: left;"></td>
+<td>P-value</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>With</td>
+<td>Without</td>
+<td></td>
+<td style="text-align: left;">With</td>
+<td style="text-align: left;">Without</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>COI disclosure</td>
+<td>2 (5)</td>
+<td>5 (9)</td>
+<td>&lt; 0.001</td>
+<td style="text-align: left;">2.8 (0.61)</td>
+<td style="text-align: left;">2.7 (0.06)</td>
+<td>&lt; 0.001</td>
+</tr>
+<tr class="even">
+<td>Funding disclosure</td>
+<td>2 (5)</td>
+<td>3 (7)</td>
+<td>&lt; 0.001</td>
+<td style="text-align: left;">2.8 (0.06)</td>
+<td style="text-align: left;">2.7 (0.70)</td>
+<td>&lt; 0.001</td>
+</tr>
+<tr class="odd">
+<td>Registration</td>
+<td>1 (4)</td>
+<td>2 (7)</td>
+<td>&lt; 0.001</td>
+<td style="text-align: left;">2.8 (0.01)</td>
+<td style="text-align: left;">2.7 (0.61)</td>
+<td>&lt; 0.001</td>
+</tr>
+<tr class="even">
+<td>Data sharing</td>
+<td>2 (4)</td>
+<td>2 (7)</td>
+<td>0.01</td>
+<td style="text-align: left;">2.8 (0.00)</td>
+<td style="text-align: left;">2.8 (0.49)</td>
+<td>&lt; 0.001</td>
+</tr>
+<tr class="odd">
+<td>Code sharing</td>
+<td>1.5 (3)</td>
+<td>2 (7)</td>
+<td>0.70</td>
+<td style="text-align: left;">2.8 (0.00)</td>
+<td style="text-align: left;">2.8 (0.49)</td>
+<td>0.08</td>
+</tr>
+</tbody>
+</table>
+<p>P-value based on the Wilcoxon rank sum test. 1929 articles were published in journals with no impact factor. COI: Conflict of interest; SD: Standard deviation; IQR: Inter-quartile range.</p>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-Skipper2020-rs" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Skipper M. <span>COVID</span> vaccine confidence requires radical transparency. Nature [Internet]. 2020 Oct;586(7827):8. Available from: <a href="http://dx.doi.org/10.1038/d41586-020-02738-y">http://dx.doi.org/10.1038/d41586-020-02738-y</a></div>
+</div>
+<div id="ref-Bellantoni_undated-tf" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Bellantoni A, Badr K, Alfonsi C. Transparency, communication and trust: The role of public communication in responding to the wave of disinformation about the new coronavirus [Internet]. <a href="https://www.oecd.org/coronavirus/policy-responses/transparency-communication-and-trust-the-role-of-public-communication-in-responding-to-the-wave-of-disinformation-about-the-new-coronavirus-bef7ad6e/" class="uri">https://www.oecd.org/coronavirus/policy-responses/transparency-communication-and-trust-the-role-of-public-communication-in-responding-to-the-wave-of-disinformation-about-the-new-coronavirus-bef7ad6e/</a>; Available from: <a href="https://www.oecd.org/coronavirus/policy-responses/transparency-communication-and-trust-the-role-of-public-communication-in-responding-to-the-wave-of-disinformation-about-the-new-coronavirus-bef7ad6e/">https://www.oecd.org/coronavirus/policy-responses/transparency-communication-and-trust-the-role-of-public-communication-in-responding-to-the-wave-of-disinformation-about-the-new-coronavirus-bef7ad6e/</a></div>
+</div>
+<div id="ref-besançon2021" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Besançon L, Peiffer-Smadja N, Segalas C, Jiang H, Masuzzo P, Smout C, et al. Open science saves lives: lessons from the COVID-19 pandemic. BMC Medical Research Methodology [Internet]. 2021 Jun 5;21(1). Available from: <a href="http://dx.doi.org/10.1186/s12874-021-01304-y">http://dx.doi.org/10.1186/s12874-021-01304-y</a></div>
+</div>
+<div id="ref-vuong2022" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Vuong Q-H, Le T-T, La V-P, Nguyen HTT, Ho M-T, Van Khuc Q, et al. Covid-19 vaccines production and societal immunization under the serendipity-mindsponge-3D knowledge management theory and conceptual framework. Humanities and Social Sciences Communications [Internet]. 2022 Jan 18;9(1). Available from: <a href="http://dx.doi.org/10.1057/s41599-022-01034-6">http://dx.doi.org/10.1057/s41599-022-01034-6</a></div>
+</div>
+<div id="ref-serghiou2021" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Serghiou S, Contopoulos-Ioannidis DG, Boyack KW, Riedel N, Wallach JD, Ioannidis JPA. Assessment of transparency indicators across the biomedical literature: How open is open? Bero L, editor. PLOS Biology [Internet]. 2021 Mar 1;19(3):e3001107. Available from: <a href="http://dx.doi.org/10.1371/journal.pbio.3001107">http://dx.doi.org/10.1371/journal.pbio.3001107</a></div>
+</div>
+<div id="ref-metareadr" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Serghiou S. Metareadr: Downloads data often needed for meta-research. 2022; Available from: <a href="https://github.com/serghiou/metareadr">https://github.com/serghiou/metareadr</a></div>
+</div>
+<div id="ref-base" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">R Core Team. R: A language and environment for statistical computing. 2022; Available from: <a href="https://www.R-project.org/">https://www.R-project.org/</a></div>
+</div>
+<div id="ref-europepmc" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Jahn N. Europepmc: R interface to the europe PubMed central RESTful web service. 2021; Available from: <a href="https://CRAN.R-project.org/package=europepmc">https://CRAN.R-project.org/package=europepmc</a></div>
+</div>
+<div id="ref-rtransparent" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Serghiou S. Rtransparent: Identifies indicators of transparency. 2021; Available from: <a href="http://github.com/serghiou/rtransparent">http://github.com/serghiou/rtransparent</a></div>
+</div>
+<div id="ref-ggplot2" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Wickham H. ggplot2: Elegant graphics for data analysis. 2016; Available from: <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a></div>
+</div>
+<div id="ref-epiR" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">11. </div><div class="csl-right-inline">Stevenson M, Nunes ES with contributions from T, Heuer C, Marshall J, Sanchez J, Thornton R, et al. epiR: Tools for the analysis of epidemiological data. 2022; Available from: <a href="https://CRAN.R-project.org/package=epiR">https://CRAN.R-project.org/package=epiR</a></div>
+</div>
+<div id="ref-huang2020" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">12. </div><div class="csl-right-inline">Huang C, Wang Y, Li X, Ren L, Zhao J, Hu Y, et al. Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China. The Lancet [Internet]. 2020 Feb;395(10223):497–506. Available from: <a href="http://dx.doi.org/10.1016/s0140-6736(20)30183-5">http://dx.doi.org/10.1016/s0140-6736(20)30183-5</a></div>
+</div>
+<div id="ref-coronavi" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">13. </div><div class="csl-right-inline">Coronavirus (COVID-19): sharing research data [Internet]. Available from: <a href="https://wellcome.org/press-release/sharing-research-data-and-findings-relevant-novel-coronavirus-ncov-outbreak">https://wellcome.org/press-release/sharing-research-data-and-findings-relevant-novel-coronavirus-ncov-outbreak</a></div>
+</div>
+<div id="ref-cord-19" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">14. </div><div class="csl-right-inline">CORD-19 | Semantic Scholar [Internet]. Available from: <a href="https://www.semanticscholar.org/cord19?utm_campaign=CORD-19&amp;utm_source=hs_email&amp;utm_medium=email&amp;utm_content=85059182&amp;_hsenc=p2ANqtz-_AzPEfvedG_BmLwzXX7INzZ88WRx2bF75yj1q7eG4VbJ1RjtQFBfC0z4JvHJo31krm8BKQjkx0WlPI2R2blZ-GyO2MCQ&amp;_hsmi=85059182">https://www.semanticscholar.org/cord19?utm_campaign=CORD-19&amp;utm_source=hs_email&amp;utm_medium=email&amp;utm_content=85059182&amp;_hsenc=p2ANqtz-_AzPEfvedG_BmLwzXX7INzZ88WRx2bF75yj1q7eG4VbJ1RjtQFBfC0z4JvHJo31krm8BKQjkx0WlPI2R2blZ-GyO2MCQ&amp;_hsmi=85059182</a></div>
+</div>
+<div id="ref-lucas-dominguez2021" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">15. </div><div class="csl-right-inline">Lucas-Dominguez R, Alonso-Arroyo A, Vidal-Infer A, Aleixandre-Benavent R. The sharing of research data facing the COVID-19 pandemic. Scientometrics [Internet]. 2021 Apr 26;126(6):4975–90. Available from: <a href="http://dx.doi.org/10.1007/s11192-021-03971-6">http://dx.doi.org/10.1007/s11192-021-03971-6</a></div>
+</div>
+<div id="ref-strcic2022" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">16. </div><div class="csl-right-inline">Strcic J, Civljak A, Glozinic T, Pacheco RL, Brkovic T, Puljak L. Open data and data sharing in articles about COVID-19 published in preprint servers medRxiv and bioRxiv. Scientometrics [Internet]. 2022 Mar 25; Available from: <a href="http://dx.doi.org/10.1007/s11192-022-04346-1">http://dx.doi.org/10.1007/s11192-022-04346-1</a></div>
+</div>
+<div id="ref-Glasziou2020" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">17. </div>
+</div>
+<div id="ref-luengo-oroz2020" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">18. </div><div class="csl-right-inline">Luengo-Oroz M, Hoffmann Pham K, Bullock J, Kirkpatrick R, Luccioni A, Rubel S, et al. Artificial intelligence cooperation to support the global response to COVID-19. Nature Machine Intelligence [Internet]. 2020 May 22;2(6):295–7. Available from: <a href="http://dx.doi.org/10.1038/s42256-020-0184-3">http://dx.doi.org/10.1038/s42256-020-0184-3</a></div>
+</div>
+<div id="ref-wallach2018a" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">19. </div><div class="csl-right-inline">Wallach JD, Boyack KW, Ioannidis JPA. Reproducible research practices, transparency, and open access data in the biomedical literature, 2015<span></span>2017. Dirnagl U, editor. PLOS Biology [Internet]. 2018 Nov 20;16(11):e2006930. Available from: <a href="http://dx.doi.org/10.1371/journal.pbio.2006930">http://dx.doi.org/10.1371/journal.pbio.2006930</a></div>
+</div>
+</div>
+</section>
+<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>Seqiz Health Network, Kurdistan University of Medical Sciences, Seqiz, Iran.; a.sofimahmudi@gmail.com<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Cochrane Iran Associate Centre, National Institute for Medical Research Development (NIMAD), Tehran, Iran.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Institute of Dentistry, University of Eastern Finland, Kuopio, Finland.; eero.raittio@uef.fi<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Department of Conservative Dentistry and Oral Health &amp; Bioinformatics Research Unit, Riga Stradins University, Riga, Latvia.; sergio.uribe@rsu.lv<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>School of Dentistry, Universidad Austral de Chile, Valdivia, Chile<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</main>
+<!-- /main column -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+</body></html>

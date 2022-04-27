@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.46">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Ahmad Sofi-Mahmudi ">
+  <meta name="author" content="Eero Raittio*">
+  <meta name="author" content="Sergio E. Uribe ">
+  <title>Transparency of COVID-19 medical literature</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+
+  <script src="protocol_covid_transparency_files/libs/clipboard/clipboard.min.js"></script>
+  <script src="protocol_covid_transparency_files/libs/quarto-html/quarto.js"></script>
+  <script src="protocol_covid_transparency_files/libs/quarto-html/popper.min.js"></script>
+  <script src="protocol_covid_transparency_files/libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="protocol_covid_transparency_files/libs/quarto-html/anchor.min.js"></script>
+  <link href="protocol_covid_transparency_files/libs/quarto-html/tippy.css" rel="stylesheet">
+  <link href="protocol_covid_transparency_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <script src="protocol_covid_transparency_files/libs/bootstrap/bootstrap.min.js"></script>
+  <link href="protocol_covid_transparency_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="protocol_covid_transparency_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body class="fullcontent">
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+<header id="title-block-header">
+<h1 class="title display-7">Transparency of COVID-19 medical literature</h1>
+<p class="author">Ahmad Sofi-Mahmudi<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p class="author">Eero Raittio*<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p class="author">Sergio E. Uribe<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+</header>
+<p><strong>Corresponding author:</strong> Eero Raittio; <strong>Address</strong>: University of Eastern Finland, Institute of Dentistry, P.O. Box 1627, FI-70211 Kuopio, Finland; <strong>Telephone</strong>: +358 294 45 1111; <strong>Email</strong>: <a href="mailto:eero.raittio@uef.fi">eero.raittio@uef.fi</a>.</p>
+<p><strong>Authors’ contributions:</strong> All authors conceived and designed, and wrote and revised the protocol.</p>
+<section id="abstract" class="level1">
+<h1>Abstract</h1>
+<p><strong>Objective and aim:</strong> The recent pandemic has shown how crucial it is to have access to quality medical information and data that allows people to have confidence in healthcare decisions. One of these indicators is transparency, i.e., the availability of original data supporting research results. We aim to assess the use of transparency indicators (data availability, code availability, statements of protocol registration and conflicts of interest and funding disclosures) from open access COVID-19-related articles published in medical journals available from the Europe PubMed Central (PMC) database. We will map transparency in medical articles across different journals, publication years, publishers, specialties and journal impact factors.</p>
+<p><strong>Methods:</strong> We will search and export all open access articles from PubMed-indexed journals available in the Europe PMC database published between January 2020 and December 2021. We will detect transparency indicators with a validated and automated tool developed to extract the indicators from the downloaded articles. Basic journal- and article-related information will be retrieved from the PMC database. We will use R for the searches (europepmc package), data handling, analysis (rtransparent package) and reporting (ggplot2 package).</p>
+<p><strong>Discussion:</strong> Our results will establish the current state of the rapidly publishing COVID-19 research reporting transparency and may indicate areas for improvement as well as specific steps or requirements to ensure reporting transparency. This would influence both scientists’ and the public’s perception of the credibility of results published in peer-reviewed journals.</p>
+<p><strong><em>Keywords:</em></strong> COVID-19; Dentistry; Data; FAIR data principles; Open Science.</p>
+</section>
+<section id="aims" class="level1">
+<h1>Aims</h1>
+<p>Our objective is to evaluate the transparency indicators (data sharing, code, declaration of interest, funding, availability of research protocol) from open access full-text COVID-19-related articles published in medical journals available from the Europe PMC. We map transparency across publication years, publishers and journals.</p>
+</section>
+<section id="methods" class="level1">
+<h1>Methods</h1>
+<section id="data-sources-and-study-selection" class="level2">
+<h2 class="anchored" data-anchor-id="data-sources-and-study-selection">Data sources and study selection</h2>
+<p>We will search for open access COVID-19-related articles from medical journals available in the Europe PMC database. We will restrict our search to papers in English. We will consider papers published from 2020-01-01 to 2021-12-31 with variants of COVID-19 keyword in their title, keywords, or results. We will download all identified records in XML full-text format (for full-text evaluation) and in CSV format (for descriptive tabulations) from the database. The search query will be as follows:</p>
+<p>(COVID-19 query for title, keywords, and results) AND (SRC:“MED”) AND (LANG:“eng” OR LANG:“en” OR LANG:“us”) AND (FIRST_PDATE:[2020-01-01 TO 2021-12-31]) AND ((IN_EPMC:y) OR (OPEN_ACCESS:y)) AND (PUB_TYPE:“Journal Article” OR PUB_TYPE:“research-article” OR PUB_TYPE:“rapid-communication” OR PUB_TYPE:“product-review”)’</p>
+<p>The full COVID-19 query is available in the <em>covid_keywords.csv</em> file.</p>
+</section>
+<section id="data-extraction-and-synthesis" class="level2">
+<h2 class="anchored" data-anchor-id="data-extraction-and-synthesis">Data extraction and synthesis</h2>
+<p>We aim to describe adherence to five transparency practices in the articles:</p>
+<ul>
+<li><p>data availability,</p></li>
+<li><p>code availability,</p></li>
+<li><p>conflicts of interest disclosures,</p></li>
+<li><p>funding disclosures,</p></li>
+<li><p>statements of protocol registration.</p></li>
+</ul>
+<p>To do so, we will use a validated and automated tool developed by Serghiou et al. <span class="citation" data-cites="serghiou2021">(<a href="#ref-serghiou2021" role="doc-biblioref">1</a>)</span> to extract the indicators from open access articles downloaded from the Europe PMC database.</p>
+<p>Basic journal- and article-related information (publisher, publication year and journal name) will be retrieved from the Europe PMC database. We will download additional information about journal impact factors from the Journal Citation Reports (ٰ<a href="https://jcr.clarivate.com/">jcr.clarivate.com</a>).</p>
+<p>We will also calculate the proportion of articles available as open access via the Europe PMC from the total number of COVID-19-related detected in the database.</p>
+<p>We will use R <span class="citation" data-cites="R-base">(<a href="#ref-R-base" role="doc-biblioref">2</a>)</span> for searches, data handling, analysis and reporting. The searches and data export from the Europe PMC will be conducted with the europepmc package <span class="citation" data-cites="europepmc">(<a href="#ref-europepmc" role="doc-biblioref">3</a>)</span>. Transparency indicators from the available full-texts will be extracted with the rtransparent package <span class="citation" data-cites="rtransparent">(<a href="#ref-rtransparent" role="doc-biblioref">4</a>)</span>. Trends over time in transparency indicators by journal- and article-related information will be reported using descriptive tabulations and graphical illustrations, for instance using the ggplot2 package <span class="citation" data-cites="ggplot2">(<a href="#ref-ggplot2" role="doc-biblioref">5</a>)</span>.</p>
+<p>The protocol of this study will be published beforehand on the Open Science Framework website (OSF, osf.io).</p>
+</section>
+</section>
+<section id="limitations" class="level1">
+<h1>Limitations</h1>
+<p>The study sample will be restricted to open access articles in the Europe PMC database which may not correspond to all COVID-19-related studies published in medical journals. However, as the majority of COVID-19-related papers are open access<span class="citation" data-cites="Kiley2020-ek">(<a href="#ref-Kiley2020-ek" role="doc-biblioref">6</a>)</span>, this will not diminish the strength of our interpretations considerably.</p>
+</section>
+<section id="references" class="level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-serghiou2021" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Serghiou S, Contopoulos-Ioannidis DG, Boyack KW, Riedel N, Wallach JD, Ioannidis JPA. Assessment of transparency indicators across the biomedical literature: How open is open? Bero L, editor. PLOS Biology [Internet]. 2021 Mar 1;19(3):e3001107. Available from: <a href="http://dx.doi.org/10.1371/journal.pbio.3001107">http://dx.doi.org/10.1371/journal.pbio.3001107</a></div>
+</div>
+<div id="ref-R-base" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">R Core Team. R: A language and environment for statistical computing [Internet]. Vienna, Austria: R Foundation for Statistical Computing; 2019. Available from: <a href="https://www.R-project.org">https://www.R-project.org</a></div>
+</div>
+<div id="ref-europepmc" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Jahn N. Europepmc: R interface to the europe PubMed central RESTful web service. 2021; Available from: <a href="https://CRAN.R-project.org/package=europepmc">https://CRAN.R-project.org/package=europepmc</a></div>
+</div>
+<div id="ref-rtransparent" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Serghiou S. Rtransparent: Identifies indicators of transparency. 2021; Available from: <a href="http://github.com/serghiou/rtransparent">http://github.com/serghiou/rtransparent</a></div>
+</div>
+<div id="ref-ggplot2" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Wickham H. ggplot2: Elegant graphics for data analysis. 2016; Available from: <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a></div>
+</div>
+<div id="ref-Kiley2020-ek" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Kiley R. Three lessons <span>COVID-19</span> has taught us about open access publishing. 2020 Oct; Available from: <a href="https://blogs.lse.ac.uk/impactofsocialsciences/2020/10/06/39677/">https://blogs.lse.ac.uk/impactofsocialsciences/2020/10/06/39677/</a></div>
+</div>
+</div>
+</section>
+<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>Seqiz Health Network, Kurdistan University of Medical Sciences, Seqiz, Iran.; a.sofimahmudi@gmail.com<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Cochrane Iran Associate Centre, National Institute for Medical Research Development (NIMAD), Tehran, Iran.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Institute of Dentistry, University of Eastern Finland, Kuopio, Finland.; eero.raittio@uef.fi<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Department of Conservative Dentistry and Oral Health &amp; Bioinformatics Research Unit, Riga Stradins University, Riga, Latvia.; sergio.uribe@rsu.lv<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>School of Dentistry, Universidad Austral de Chile, Valdivia, Chile<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</main>
+<!-- /main column -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+</body></html>
